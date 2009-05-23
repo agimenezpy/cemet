@@ -1,0 +1,19 @@
+syntax: glob
+*.pyc
+*~
+*.dbf
+*.sh*
+*.prj
+*.fix
+*.sbx
+*.sbn
+*.qix
+*.mo
+*.pdf
+design/*.png
+web/public/media/*
+scripts/*.log*
+scripts/*.txt
+dokuwiki/tpl/cemet/images/*
+dokuwiki/data/media/wiki/*
+dokuwiki/tpl/cemet/*

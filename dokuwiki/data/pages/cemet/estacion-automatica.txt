@@ -1,0 +1,128 @@
+====== Estación Meteorológica Automática ======
+El Centro Meteorológico cuenta con una **Estación Meteorológica Automática** (EMA), operando continuamente desde el 18 de octubre del año 2002. Esta ubicada en el predio de la misma, (cercana a la [[cemet:estacion-convencional|Estación Meteorológica Convencional]]). Esta estación automática, transmite los datos por medio de un enlace de fibra óptica a una estación de trabajo ubicada en la oficina del Centro Meteorológico. Los parámetros medidos por esta estación son: 
+  - Temperatura del aire
+  - Temperatura del suelo
+  - Humedad relativa
+  - Temperatura de punto de rocío
+  - Presión atmosférica
+  - Dirección y velocidad del viento
+  - Precipitación
+  - Radiación neta
+  - Radiación global.
+La finalidad de uso de una estación con esta tecnología, da cuenta de la importancia con que la institución se siente abocada a los fines prácticos y didácticos que desea proporcionar a los estudiantes, acorde a los últimos tiempos de rápido avance en la electrónica, informática y telecomunicaciones. La siguiente figura muestra la disposición de la estación.
+
+{{  :cemet:estacion_automatica.jpg  | Estación Meteorológica Automática }}
+<html><center></html>//Figura 1. Estación Meteorológica Automática//<html></center></html>
+
+===== Historia =====
+En el mes de octubre del 2002, a través de un convenio con la [[http://www.sen.gov.py|Secretaría de Emergencia Nacional]], la Facultad Politécnica de la Universidad Nacional de Asunción fue beneficiada con la instalación de una **Estación Meteorológica Automática**, perteneciendo esta, a una red de 25 estaciones automáticas ubicadas en diferentes puntos del país. 
+
+=====  ¿Que es una Estación Meteorológica Automática? =====
+Una estación meteorológica automática (EMA) es una herramienta por la cual se obtienen datos de los parámetros meteorológicos como temperatura, humedad, velocidad y dirección del viento, presión atmosférica, lluvia y otros, leídos por medio de sensores eléctricos. Las lecturas son acondicionadas para luego ser procesadas mediante la tecnología de microcontroladores o microprocesadores, y transmitidas a través de un sistema de comunicación (radio, satélites, teléfono, etc) en forma automática. La estación automática funciona en forma autónoma, las 24 horas, con un sistema de alimentación a través de energía solar (paneles solares), o mediante el uso de la energía eólica.
+
+La implementación de una estación de esta naturaleza tiene varias ventajas como por ejemplo:
+  * Adquisición de datos en tiempo variable de acuerdo a la necesidad del meteorólogo (durante eventos atmosféricos severos, se requiere mayor cantidad de datos).
+  * Necesidad de colocar estaciones automáticas en lugares hostiles de difícil acceso.
+  * Mayor confiabilidad en algunos datos meteorológicos.
+  * Rapidez en realizar tareas estadísticas.
+
+===== Unidades Componentes =====
+La estación cuenta con las siguientes unidades:
+  * Unidad colectora de datos (''datalogger'').
+  * 8 (ocho) Sensores
+  * Unidad de alimentación (panel solar, controlador de potencia y batería).
+  * Sistema de transmisión por Satélite INMARSAT C.
+  * Sistema de transmisión vía RS232 (utilizada actualmente).
+  * Visualizador visualizador de datos instantáneos.
+  * Unidad protectora contra descargas atmosféricas (pararrayos, sistema de puesta a tierra).
+  * Software de tratamiento de datos HIDRAS3.
+
+===== Sensores de medición =====
+==== Sensor de temperatura del aire y humedad ====
+Ubicada a 1.5 ''m'' de altura mide la temperatura del aire en ''ºC'' y la humedad relativa en ''%''. Posee una rejilla protectora.
+
+{{  :cemet:sensor_temperatura.jpg  | Sensor de temperatura del aire y humedad }}
+<html><center></html>//Figura 2. Sensor de temperatura del aire y humedad//<html></center></html>
+
+Datos técnicos:
+  * Sensor tipo Pt100
+  * Salida eléctrica: 4 a 20 ''mA''
+  * Exactitud: ±0.1 ''ºC''
+  * Rango de medida: -40 a 80 ''ºC''
+	
+==== Sensor de dirección de viento ====
+Ubicada a 10 ''m'' de altura, mide la dirección del viento en grados (0 a 360 grados).
+
+{{  :cemet:sensor_dirviento.gif  | Sensor de dirección de viento }}
+<html><center></html>//Figura 3. Sensor de dirección de viento//<html></center></html>
+
+Datos técnicos:
+  * Rango de medida: 0 a 360 ''º''
+  * Código de salida: código Gray de 5 bits
+  * Resolución: 11.5''º''
+	
+==== Sensor de velocidad de viento ====
+Igualmente ubicada a 10 ''m'' de altura, mide la velocidad del viento en ''m/s''.
+
+{{  :cemet:sensor_velviento.gif  | Sensor de velocidad de viento }}
+<html><center></html>//Figura 4. Sensor de velocidad de viento//<html></center></html>
+
+Datos técnicos:
+  * Rango de medida: 0.5 a 50 ''m/s''
+  * Resolución: 10 impulsos por revolución
+  * Salida de señal: impulsos
+	
+==== Sensor de presión ====
+Mide la presión atmosférica a nivel de la estación en ''hPa''. Se encuentra ubicado dentro del contenedor del ''datalogger''.
+
+{{  :cemet:sensor_presion.jpg  | Sensor de presión }}
+<html><center></html>//Figura 5. Sensor de presión//<html></center></html>
+
+Datos técnicos:
+  * Sensor de presión absoluta de silicio capacitivo.
+  * Rango de medición: 800 a 1060 ''hPa''
+  * Resolución: 0.1 ''hPa''
+  * Salida eléctrica: 0 a 5 ''V''
+	
+==== Pluviómetro ====
+Mide la cantidad de lluvia caída en ''mm''.
+
+{{  :cemet:sensor_precipitacion.jpg  | Pluviómetro }}
+<html><center></html>//Figura 6. Pluviómetro//<html></center></html>
+
+Datos técnicos:
+  * Medición tipo basculante.
+  * Resolución: 1 pulso ~ 0.1 ''mm'' de precipitación
+  * Contacto impulso: mínimo 50 ''ms''
+	
+==== Radiación global ====
+Sensor tipo CM7BMide la radiación global terrestre
+
+{{  :cemet:sensor_radg.jpg  | Radiación global }}
+<html><center></html>//Figura 7. Radiación global//<html></center></html>
+
+Datos técnicos:
+  * Elemento sensor: 64 termocuplas en serie
+  * Irradiancia: 0 a 1400 ''w/m2''
+  * Irradiancia máxima: 200 ''w/m2''
+  * Rango espectral: 305 a 2800 ''nm''
+	
+==== Radiación neta ====
+Mide la radiación neta.
+
+{{  :cemet:sensor_radn.jpg  | Radiación neta }}
+<html><center></html>//Figura 8. Radiación neta//<html></center></html>
+
+Datos técnicos:
+  * Tipo: NR LITE
+  * Elemento sensor: 64 termocuplas en serie
+  * Protector del sensor: Teflón
+  * Rango de medición: -2000 ''w/m2'' a +2000 ''w/m2''
+  * Rango espectral: 0,2 a 100 ''mm''
+
+===== Software de tratamiento de datos =====
+El software HYDRAS3 se encarga de codificar y tratar los datos en un formato entendible y visible para cualquier usuario común. En forma gráfica y numérica se pueden observar las lecturas que han realizado los distintos sensores, siendo estas mediciones de dos tipos:
+  * Mediciones instantáneas: tomadas por los sensores cada 10 minutos y transmitidas al computador cada 1 hora.
+  * Mediciones horarias: adquiridas por sensores virtuales cada 1 hora o cada 3 horas (promedia los datos instantáneos).
+
+HYDRAS3, almacena las mediciones tomados desde la estación automática, permitiendo de esta forma que estos datos puedan ser llamados desde la base de datos en cualquier instante, durante un intervalo de tiempo deseado por el usuario para realizar estudios estadísticos como por ejemplo temperatura media mensual, semestral, anual, o realizar correcciones de datos. 

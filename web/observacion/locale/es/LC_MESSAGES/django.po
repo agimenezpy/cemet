@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-04-04 17:29-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: models.py:9
+msgid "pais.nombre"
+msgstr "nombre de país"
+
+#: models.py:10
+msgid "pais.codigo"
+msgstr "código país"
+
+#: models.py:16 models.py:24
+msgid "pais"
+msgstr "país"
+
+#: models.py:17
+msgid "paises"
+msgstr "paises"
+
+#: models.py:22
+msgid "organizacion.nombre"
+msgstr "nombre de organización"
+
+#: models.py:23
+msgid "organizacion.siglas"
+msgstr "siglas de organización"
+
+#: models.py:30 models.py:68
+msgid "organizacion"
+msgstr "organización"
+
+#: models.py:31
+msgid "organizaciones"
+msgstr "organizaciones"
+
+#: models.py:35
+msgid "unidad.descripcion"
+msgstr "descripción de unidad"
+
+#: models.py:36
+msgid "unidad.notacion"
+msgstr "notación de unidad"
+
+#: models.py:42 models.py:49
+msgid "unidad"
+msgstr "unidad"
+
+#: models.py:43
+msgid "unidades"
+msgstr "unidades"
+
+#: models.py:47
+msgid "variable.codigo"
+msgstr "código de variable"
+
+#: models.py:48
+msgid "variable.descripcion"
+msgstr "descripción de variable"
+
+#: models.py:50
+msgid "variable.inferior"
+msgstr "límite inferior"
+
+#: models.py:51
+msgid "variable.superior"
+msgstr "límite superior"
+
+#: models.py:57 models.py:105
+msgid "variable"
+msgstr "variable"
+
+#: models.py:58 models.py:82
+msgid "variables"
+msgstr "variables"
+
+#: models.py:62
+msgid "estacion.nombre"
+msgstr "nombre de estación"
+
+#: models.py:63
+msgid "estacion.convencional"
+msgstr "¿es convencional?"
+
+#: models.py:64
+msgid "estacion.ubicacion"
+msgstr "ubicación geográfica"
+
+#: models.py:65
+msgid "estacion.elevacion"
+msgstr "elevación"
+
+#: models.py:66
+msgid "estacion.synop"
+msgstr "código synop"
+
+#: models.py:67
+msgid "estacion.oaci"
+msgstr "código oaci"
+
+#: models.py:76 models.py:106
+msgid "estacion"
+msgstr "estación"
+
+#: models.py:77 models.py:83
+msgid "estaciones"
+msgstr "estaciones"
+
+#: models.py:91
+msgid "calidad.codigo"
+msgstr "código de QC"
+
+#: models.py:92
+msgid "calidad.descripcion"
+msgstr "descripción de QC"
+
+#: models.py:93
+msgid "calidad.comentario"
+msgstr "comentario de QC"
+
+#: models.py:94
+msgid "calidad.automatico"
+msgstr "QC automático"
+
+#: models.py:100
+msgid "calidad"
+msgstr "Información de Calidad"
+
+#: models.py:101
+msgid "calidades"
+msgstr "informaciones de calidad"
+
+#: models.py:107
+msgid "medida.tiempo"
+msgstr "tiempo de medición"
+
+#: models.py:108
+msgid "medida.valor"
+msgstr "valor de medición"
+
+#: models.py:112
+msgid "medida"
+msgstr "medida"
+
+#: models.py:113
+msgid "medidas"
+msgstr "medidas"
+
+#:
+msgid "auth"
+msgstr "autenticación"

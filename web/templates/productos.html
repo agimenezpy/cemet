@@ -1,0 +1,43 @@
+{% extends "base_site.html" %}
+
+{% block content %}
+
+<div class="post">
+    <h1 class="title">Productos Meterológicos</h1>
+    <div class="entry">
+        <p>El <strong>Centro Meteorológico</strong> de la <b>Facultad Politécnica</b> dispone de
+        varios productos que son resultado de actividades de observación y análisis periodicos.<br>
+        Los productos disponibles actualmente son:
+        </p>
+        <div class="mosaic">
+            <ul>
+            <li><center><a href="#">Modelos Numéricos<img src="/media/img/modelo.gif"></a></center></li>
+            <li><center><a href="#">Tiempo<br><img src="/media/img/tiempo.gif"></a></center></li>
+            <li><center><a href="#">Clima<br><img src="/media/img/clima.gif"></a></center></li>
+            <li><center><a href="#">Base de datos<img src="/media/img/base.gif"></a></center></li>
+            <li><center><a href="#">Observaciones<img src="/media/img/observacion.gif"></a></center></li>
+            <li><center><a href="#">Investigación<br><img src="/media/img/modelo.gif"></a></center></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="sidebar">
+<ul>
+    <li>
+        <h2>Secciones</h2>
+        <ul>
+            <li><a href="#">Modelos Numéricos</a></li>
+            <li><a href="#">Tiempo</a></li>
+            <li><a href="#">Clima</a></li>
+            <li><a href="#">Base de datos</a></li>
+            <li><a href="#">Observaciones</a></li>
+            <li><a href="#">Investigación</a></li>
+        </ul>
+    </li>
+{% include 'links.html' %}
+</ul>
+</div>
+{% endblock %}

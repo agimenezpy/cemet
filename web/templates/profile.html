@@ -1,0 +1,38 @@
+{% extends 'base_site.html' %}
+
+{% block content %}
+<div class="dokuwiki">
+    <div class="level2">
+    <br>
+    <p><b>Bienvenido</b>, este página muestra información sobre su perfil ademas de proveer
+    enlaces a las diversas funcionalidades especiales de análisis de datos observados.</p>
+    <table class="inline">
+        <tr><th colspan="2" class="centeralign">Datos Personales</th></tr>
+        <tr><th class="rightalign">Nombre de Usuario: </th><td class="leftalign"> {{ user.username }} </td></tr>
+        <tr><th class="rightalign">Nombre: </th><td class="leftalign"> {{ user.first_name }} </td></tr>
+        <tr><th class="rightalign">Apellido: </th><td class="leftalign"> {{ user.last_name }} </td></tr>
+        <tr><th class="rightalign">Cuenta de Correo: </th><td class="leftalign"> {{ user.email }} </td></tr>
+        <tr><th class="rightalign">Último Acceso: </th><td class="leftalign"> {{ user.last_login|date:"H:m d/F/Y" }} </td></tr>
+        <tr><th class="rightalign">Fecha de Registro: </th><td class="leftalign"> {{ user.date_joined|date:"H:m d/F/Y" }} </td></tr>
+    </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="sidebar" style="width: 250px">
+<ul class="secs">
+    <li class="links">
+        <h2>Secciones</h2>
+        <ul class="secs">
+            <li><a href="#">Modelos Numéricos</a></li>
+            <li><a href="#">Tiempo</a></li>
+            <li><a href="#">Clima</a></li>
+            <li><a href="#">Base de datos</a></li>
+            <li><a href="#">Observaciones</a></li>
+            <li><a href="#">Investigación</a></li>
+        </ul>
+    </li>
+</ul>
+</div>
+{% endblock %}

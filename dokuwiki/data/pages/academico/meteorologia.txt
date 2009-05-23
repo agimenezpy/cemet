@@ -1,0 +1,40 @@
+====== Licenciatura en Ciencias Atmosféricas ======
+
+Las **Ciencias Atmosféricas**, comúnmente llamada **Meteorología**, es la rama de la ciencia terrestre que estudia los procesos físicos y químicos que ocurren en la atmósfera terrestre y los fenómenos que en ella se manifiestan.
+
+Los procesos físicos y termodinámicos son fundamentales para entender el desarrollo de las nubes y la precipitación. El conocimiento de los procesos de radiación es indispensable para la comprensión de las estructuras térmicas de la atmósfera. Los procesos de la dinámica de los fluidos son el soporte principal para entender el movimiento de los sistemas meteorológicos.
+
+Las **Ciencias Atmosféricas** estudian a los fenómenos más desbastadores y asociados a los desastres naturales del planeta como son las tormentas severas, los tornados, los huracanes o tifones, los tsunamis y el régimen de inundaciones asociados a ellos.
+
+Actualmente los cambios en la química atmosférica y balance de radiación en la atmósfera, producto de las emisiones de gases y partículas por actividades antropogenias, han puesto de manifiesto cambios globales que amenazan con profundas transformaciones del clima. La atmósfera es uno de los sumideros de los contaminantes producidos por el hombre y es parte de su estudio evaluar la dispersión y la transformación de los mismos.
+
+La tecnología esta presente en todos los estudios de las **Ciencias Atmosféricas**, así las técnicas de computación son fundamentales para el diagnóstico y la predicción. La predicción meteorológica y climática es posible actualmente, entre otros factores, a la capacidad de los ordenadores actuales de correr complejos modelos de circulación atmosférica y oceánica. La electrónica y las comunicaciones son de gran utilidad para desarrollar modernos sistemas de observación del tiempo y el clima, actualmente la observación o medición remota del ambiente terrestre, a través de plataformas de colecta de datos; cohetes, radares y satélites han hecho posible una evaluación más precisa de los sistemas y fenómenos atmosféricos.
+
+===== Perfil del egresado =====
+
+El graduado en Ciencias Atmosféricas de la Facultad Politécnica está capacitado para desempeñarse en varios ámbitos, entre los que se destacan a los siguientes:
+    * Diseñar, operar y mantener redes de observación meteorológica e hidrológica.
+    * Planificar, organizar y operar bancos de datos hidro-meteorológicos.
+    * Analizar, diagnosticar y realizar predicciones sobre situaciones meteorológicas.
+    * Organizar servicios meteorológicos aeronáuticos.
+    * Realizar estudios y proyecciones de la tendencia del clima.
+    * Coadyuvar en la realización de predicciones hidro-meteorológicas.
+    * Coadyuvar en los estudios de la relación suelo-planta-atmósfera.
+    * Cooperar con especialistas en la ejecución de proyectos de investigación en el campo de la meteorología y de ciencias conexas.
+    * Asesorar a empresas de diversos tipos tales como las agropecuarias, de construcciones, de seguros generales y de servicios en el manejo y la interpretación de la información y los pronósticos meteorológicos y climáticos.
+    * Diseñar y ejecutar servicios de información meteorológica y climática en medios de comunicación social. 
+
+===== Principales áreas de actividad profesional =====
+
+En virtud del perfil del profesional sus principales áreas de actividad profesional son los siguientes:
+    * Servicios meteorológicos e hidrológicos públicos o privados
+    * Aeropuertos civiles o militares
+    * Estaciones experimentales agropecuarias
+    * Universidades y centros de formación en general
+    * Medios de comunicación social
+    * Empresas consultoras de diversas especialidades
+
+===== Resumen de la carrera =====
+
+  * Título: Licenciatura en Ciencias Atmosféricas
+  * Duración: 8 semestres

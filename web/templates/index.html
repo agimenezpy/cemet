@@ -1,0 +1,54 @@
+{% extends "base_site.html" %}
+{% block content %}
+
+<div class="post">
+    <h1 class="title">Bienvenido a nuestro sitio web</h1>
+    <p class="byline"><small>División de Meteorología</small></p>
+    <div class="entry">
+        <p>El <strong>Centro Meteorológico</strong> de la <b>Facultad Politécnica</b> es una
+        división enfocada en la investigación y los estudios relacionados a las ciencias atmosféricas. Emprende la tarea
+        de proporcionar información relacionada a la meterología y el medio ambiente a diferentes tipos de usuarios. Además,
+        asiste a los alumnos de la carrera de Meteorología.        
+        </p>
+    </div>
+    <div class="meta">
+        <a class="comments" href="/acerca.html">Leer más</a>
+    </div>
+</div>
+<div class="post">
+    <h1 class="title">Misión</h1>
+    <div class="entry">
+        <a name="m"></a><p>...</p>
+    </div>
+</div>
+<div class="post">
+    <h1 class="title">Visión</h1>
+    <div class="entry">
+        <a name="v"></a><p>...</p>
+    </div>
+</div>
+<div class="post">
+    <h1 class="title">Objetivos</h1>
+    <div class="entry">
+        <a name="o"></a><p>...</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="sidebar">
+    <ul>
+        <li>
+            <h2>Secciones</h2>
+            <ul>
+                <li><a href="#">Quiénes Somos</a></li>
+                <li><a href="#">Misión</a></li>
+                <li><a href="#">Visión</a></li>
+                <li><a href="#">Objetivos</a></li>
+            </ul>
+        </li>
+        {% include 'links.html' %}
+    </ul>
+</div>
+<!-- end #sidebar -->
+{% endblock %}

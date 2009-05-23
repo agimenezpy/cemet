@@ -1,0 +1,33 @@
+{% extends "base_site.html" %}
+
+{% block content %}
+
+<div class="post">
+    <h1 class="title">Área Académica</h1>
+    <div class="entry">
+        <p>La <b>Facultad Politécnica</b> forma a profesionales
+        en el área de las <strong>Ciencias Atmosféricas</strong>, comúnmente llamada Meteorología,
+        que es la rama de la ciencia terrestre que estudia los procesos físicos y
+        químicos que ocurren en la atmósfera terrestre y los fenómenos que en ella
+        se manifiestan.
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div id="sidebar">
+<ul>
+    <li>
+        <h2>Secciones</h2>
+        <ul>
+            <li><a href="#">Lic. en Ciencias Atmosféricas</a></li>
+            <li><a href="#">Cursos Disponibles</a></li>
+            <li><a href="#">Becas</a></li>
+            <li><a href="#">Eventos</a></li>
+        </ul>
+    </li>
+{% include 'links.html' %}
+</ul>
+</div>
+{% endblock %}

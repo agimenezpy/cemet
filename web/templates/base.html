@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso8859-1" />
+  <title>{% block title %}{% endblock %}</title>
+  {% load adminmedia %}
+  <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% admin_media_prefix %}css/base.css{% endblock %}" />
+  <link rel="stylesheet" media="screen" type="text/css" href="/lib/exe/css.php?t=cemet" />
+  {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% admin_media_prefix %}css/rtl.css{% endblock %}" />{% endif %}
+  {% block extrastyle %}{% endblock %}
+  {% block extrahead %}{% endblock %}
+  {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+</head>
+{% load i18n %}
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+<div id="container">
+
+  {% if not is_popup %}
+    <!-- Header -->
+    <div id="header" class="header">
+        {% block branding %}{% endblock %}
+        {% if user.is_authenticated %}
+        <div id="user-tools">{% trans 'Welcome,' %} <strong>{% firstof user.first_name user.username %}</strong>. {% block userlinks %}{% url django-admindocs-docroot as docsroot %}{% if docsroot %}<a href="{{ docsroot }}">{% trans 'Documentation' %}</a> / {% endif %}<a href="{{ root_path }}password_change/">{% trans 'Change password' %}</a> / <a href="{{ root_path }}logout/">{% trans 'Log out' %}</a>{% endblock %}</div>
+        {% endif %}
+        {% block nav-global %}{% endblock %}
+    </div>
+    <!-- END Header -->
+    {% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a>{% if title %} &rsaquo; {{ title }}{% endif %}</div>{% endblock %}
+  {% endif %}
+
+  {% if messages %}
+  <ul class="messagelist">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+  {% endif %}
+	
+  
+<div id="page">
+	<!--div id="header-pic"></div-->
+    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <tr>
+      <td id="left_panel">
+        {% block sidebar %}{% endblock %}
+      </td>
+      <td id="right_panel">
+	<!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        <br class="clear" />
+    </div>
+      </td>
+      </tr>
+    </table>
+    <div style="clear:both; margin:0;"></div>
+</div>
+<!-- end #page -->
+
+  {% block footer %}<div id="footer"></div>{% endblock %}
+<!-- end #footer -->
+</body>
+</html>

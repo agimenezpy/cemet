@@ -1,0 +1,12 @@
+====== Estación Convencional ======
+El Centro Meteorológico cuenta con una **Estación Meteorológica Convencional** ubicada en el predio de la Facultad Politécnica que realiza mediciones de los siguientes parámetros: 
+  - Temperatura del aire
+  - Temperatura de bulbo húmedo
+  - Temperaturas extremas (máxima y mínima)
+  - Dirección y velocidad de viento
+  - Precipitación
+  - Evaporación
+La figura muestra la disposición de la estación.
+
+{{  :cemet:estacion_convencional.jpg  |Estación Convencional}}
+<html><center></html>//Figura 1. Estación Meteorológica Convencional//<html></center></html>
