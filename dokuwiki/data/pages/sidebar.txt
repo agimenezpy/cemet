@@ -1,0 +1,20 @@
+====== Secciones ======
+  * [[inicio|Inicio]]
+  * [[productos:inicio|Productos Meteorológicos]]
+  * [[academico:inicio|Área Académica]]
+  * [[cemet:inicio|Acerca de]]
+
+====== Área de Miembros ======
+  * [[this>admin/|Administración de Datos]]
+  * [[this>doku.php?id=Inicio&do=login|Administración de Contenidos]]
+  * [[this>accounes/|Mi Perfil]]
+
+====== Enlaces Relacionados ======
+  * [[http://www.pol.una.py/|Facultad Politécnica]]
+  * [[http://www.una.py/|Universidad Nacional de Asunción]]
+  * [[http://www.meteorologia.gov.py/|DINAC]]
+
+
+
+
+

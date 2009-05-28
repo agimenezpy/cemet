@@ -1,0 +1,250 @@
+/*
+    DJANGO Admin
+    by Wilson Miner wilson@lawrence.com
+*/
+
+/* Block IE 5 */
+@import "null.css?\"\{";
+
+/* Import other styles */
+/*@import url('global.css');*/
+/*@import url('layout.css');*/
+
+ul li { list-style-type:none; padding:0px 0pt;}
+/* Header */
+
+#header {
+    /*background: url(images/header.png) no-repeat left 30%;*/
+	height: 100px;
+	/*margin: 0px auto;*/
+}
+
+#header a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Logo */
+
+
+#logo {
+	float: left;
+	padding-left: 100px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding-bottom: 0px;
+    height: 95px;
+    background: url(images/logopol.png) no-repeat;
+}
+
+#logo h1, #logo p {
+	margin: 0px;
+	line-height: normal;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#logo h1 {
+    font-size: 2.5em;
+	padding: 10px 0px 0px 0px;
+}
+
+.login #logo h1 {
+    font-size: 1.8em;
+}
+
+/* Menu */
+
+#menu {
+	float: right;
+}
+
+#menu ul {
+	margin: 0px;
+	padding: 49px 0px 0px 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+	margin: 0px;
+}
+
+#menu a {
+	display: block;
+	width: auto;
+    font-size: 15px;
+	padding: 6px 20px;
+}
+
+#menu a:hover {
+	background: #7CA0C7;
+    text-decoration: none;
+}
+
+#menu .active a {
+	background: url(images/img02.gif) no-repeat 100% -40px;
+}
+
+/* Page */
+
+#page {
+	/*width: 990px;*/
+	margin: 0px auto;
+	padding: 10px 0px 0px 0px;
+	background: #FFFFFF;
+}
+
+#header-pic {
+	/*background: url(images/headerc.png) no-repeat left 30%;
+	width: 900px;
+	height: 150px;
+    margin-bottom: 10px;*/
+}
+
+#right_panel {
+    vertical-align: top;
+    width: 100%;
+}
+
+#left_panel {
+    vertical-align: top;
+}
+
+/* Content */
+
+.post {
+	margin: 20px 0px 20px 0px;
+    text-align: justify;
+}
+
+.post .title {
+	margin: 0px;
+	/*background: #444444 url(images/img02.jpg) no-repeat left 50%;*/
+	/*background:white url(images/admin/nav-bg-reverse.gif) repeat-x scroll 0pt -10px;
+    border-bottom:1px solid #CCCCCC;*/
+	padding: 7px 25px;
+	font-size: 1.4em;
+    color: #666666;
+}
+
+.post .entry {
+	padding: 0 20px;
+}
+
+.post .meta {
+	font-weight: bold;
+	padding-left: 20px;
+}
+
+.post .byline {
+	margin: 0px;
+	padding-left: 20px;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 300px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#sidebar ul {
+	padding: 0px 0 5px 0;
+	margin: 0px;
+	list-style: none;
+}
+
+#sidebar li li {
+	margin-left: 20px;
+	margin-right: 20px;
+	line-height: 30px;
+	padding-left: 15px;
+	border-bottom: 1px dashed #BDBDBD;
+	background: url(images/img04.jpg) no-repeat left 50%;
+}
+
+#sidebar li ul {
+	margin-bottom: 1.8em;
+	list-style: none;
+}
+
+#sidebar h2 {
+	/*background: #444444 url(images/img02.jpg) no-repeat left 50%;*/
+	background:white url(images/admin/nav-bg-reverse.gif) repeat-x scroll 0pt -10px;
+    border-top:1px solid #CCCCCC;
+    border-bottom:1px solid #CCCCCC;
+	padding: 7px 25px;
+	font-size: 1.4em;
+    color: #666666;
+    margin:0em 0pt 0.5em;
+}
+
+#sidebar a {
+	text-decoration: none;
+}
+
+#sidebar a:hover {
+	text-decoration: underline;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    background:white url(images/admin/nav-bg-reverse.gif) repeat-x scroll 0pt -10px;
+    width: 300px;
+    margin: auto;
+    padding: 0.5em;
+    text-align: center;
+}
+
+legend {
+    color:#666666;
+    font-size:1.4em;
+}
+
+label.block {
+    display: block;
+    font-weight: bold;
+    text-align: right;
+}
+
+label.simple {
+    text-align: left;
+}
+
+/* Footer */
+
+#footer p {
+	margin: 0px;
+	/*padding: 10px 0px 0px 0px;*/
+	text-align: center;
+	line-height: normal;
+	font-size: smaller;
+}
+
+.mosaic {
+    width: 100%;
+}
+
+.mosaic li {
+    height: 120px;
+    width: 150px;
+    display: inline;
+    float: left;
+    margin-top: 30px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.mosaic a {
+    text-decoration: none;
+    color : gray;
+}
+
+
+/* Import patch for IE 6 Windows */
+/*\*/ @import "patch-iewin.css"; /**/

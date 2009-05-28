@@ -1,0 +1,203 @@
+/* LAYOUT */
+div.dokuwiki div.toc {
+  float: left;
+  margin:0pt 0pt 0pt 1.5em;
+  font-size: 90%;
+}
+
+div.dokuwiki div.tocheader {
+    display: none;
+}
+
+div.dokuwiki img.mediacenter {
+    border: 1px __border__ dashed;
+}
+
+div.dokuwiki p{
+    text-align: justify;
+}
+
+.header {
+  height: 100px;
+  margin: 0px auto;
+}
+
+.logo h1 {
+  margin: 0px;
+  padding: 10px 0px 0px;
+  font-size: 2.5em;
+}
+
+.logo {
+  float: left;
+  padding-left: 100px;
+  margin-left: 5px;
+  margin-top: 5px;
+  padding-bottom: 25px;
+  height: 65px;
+}
+
+.logo p {
+  margin: 0px;
+}
+
+.bar {
+  padding:0px 8px 23px;
+  clear: both;
+}
+
+#menu {
+  float: right;
+  margin-right: 10px;
+}
+
+#menu ul {
+  margin: 0px;
+  padding: 49px 0px 0px 0px;
+  list-style: none;
+  line-height: normal;
+}
+
+#menu li {
+  float: left;
+  margin: 0px;
+}
+
+#menu a {
+  display: block;
+  width: auto;
+  padding: 6px 20px;
+}
+
+#user-tools {
+  font-size: 11px;
+  padding:1.2em 10px;
+  position:absolute;
+  right:0pt;
+  text-align:right;
+  top:0pt;
+}
+
+#right_panel {
+  vertical-align: top;
+  font-size: inherit;
+}
+
+#left_panel {
+  vertical-align: top;
+  width: 250px;
+}
+
+
+#content {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#sidebar {
+  margin-left: 10px;;
+}
+
+#sidebar div.level1 ul {
+  margin:0pt 0pt 1em 1.5em;
+}
+
+#sidebar h1  {
+  background: transparent url(images/img02.gif) repeat-x scroll 0% 0%;
+  border:1px solid __lighter__;
+  padding: 7px 20px;
+  font-size: 1.2em;
+  color: __text__;
+  margin:0em 0pt 0.5em;
+  clear: left;
+}
+
+#page {
+  margin:0px auto;
+  padding:10px 0px 0px;
+}
+
+#footer {
+	clear: both;
+}
+
+#footer p {
+	margin: 0px;
+	text-align: center;
+	line-height: normal;
+	font-size: smaller;
+}
+
+table.layout {
+    padding-bottom: 10px;
+}
+
+/* DESIGN */
+.header {
+    background: __darker__;
+    color: #FFFFCC;
+}
+
+.header a {
+	text-decoration: none;
+	color: __white__;
+}
+
+.header a:link, .header a:visited {
+  color: __white__;
+}
+
+.logo {
+    background: url(images/logopol.png) no-repeat;
+}
+
+.logo h1, .logo p {
+  line-height: normal;
+  font-weight: normal;
+  color: __background__;
+}
+
+#menu a {
+    color: __background__;
+}
+
+#menu a:hover {
+  background: __dark__;
+  text-decoration: none;
+}
+
+#menu .active a {
+  background: url(images/img02.gif) no-repeat 100% -40px;
+}
+
+table.layout {
+    border-bottom:1px solid __mediumgray__;
+}
+
+div.bar {
+  background:white url(images/admin/nav-bg-reverse.gif) repeat-x scroll 0pt -0px;
+  border-bottom:1px solid #CCCCCC;
+  border-top:1px solid white;
+  color: __text_neu;
+  font-size:11px;
+  text-align:left;
+}
+
+.mosaic {
+    width: 100%;
+}
+
+.mosaic li {
+    height: 120px;
+    width: 150px;
+    display: inline;
+    float: left;
+    margin-top: 30px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.mosaic a {
+    text-decoration: none;
+    color : gray;
+}

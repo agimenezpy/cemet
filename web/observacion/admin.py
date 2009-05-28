@@ -2,7 +2,7 @@
 from django.contrib import admin
 import django.contrib.gis.admin as admingis
 from django.conf import settings
-from cemet.observacion.models import *
+from web.observacion.models import *
 
 class PaisAdmin(admin.ModelAdmin):
     list_per_page = 15

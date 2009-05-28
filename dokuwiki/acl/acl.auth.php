@@ -1,5 +1,5 @@
 *                     @ALL        1
-*                     @meteo      2
-*                     @meteo      4
-*                     @meteo      8
-*                     @meteo     16
+*                     @cms      2
+*                     @cms      4
+*                     @cms      8
+*                     @cms     16

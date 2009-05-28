@@ -14,6 +14,5 @@ design/*.png
 web/public/media/*
 scripts/*.log*
 scripts/*.txt
-dokuwiki/tpl/cemet/images/*
 dokuwiki/data/media/wiki/*
-dokuwiki/tpl/cemet/*
+dokuwiki/tpl/cemet/images/*

@@ -69,7 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
 
-ROOT_URLCONF = 'cemet.urls'
+ROOT_URLCONF = 'web.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -85,7 +85,7 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     #'django.contrib.sessions',
     'django.contrib.sites',
-    'cemet.observacion'
+    'web.observacion'
 )
 
 LOGIN_REDIRECT_URL = "/"

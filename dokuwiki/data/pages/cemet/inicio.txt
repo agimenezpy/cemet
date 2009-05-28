@@ -11,7 +11,7 @@ El Centro Meteorológico cuenta con dos **Estaciones Meteorológicas** ubicadas 
 
 ===== Contactos =====
 El horario de atención del centro es de 14:00 a 20:45 horas. Se pueden realizar consultas a las siguientes personas:   
-  * [[grassi@pol.una.py>|Lic. Bejamin Grassi]], Director Académico de la carrera de meteorología
+  * [[grassi@pol.una.py|Lic. Bejamin Grassi]], Director Académico de la carrera de meteorología
   * [[almapas@pol.una.py|Tec. Met. Alejandro Max Pasten]], Encargado del área de meteorología
   * [[jarmoa@pol.una.py|Tec. Met. Jorge C. Armoa]] 
   * [[solbenitez@pol.una.py|Tec. Met. María Sol Benítez]] 

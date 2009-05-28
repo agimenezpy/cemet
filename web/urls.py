@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from observacion.models import Estacion
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -15,8 +14,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/(.*)', admin.site.root),
-    (r'^$', 'cemet.observacion.views.default', {'page' : 'index'}),
-    (r'^static/([^/]+)$', 'cemet.observacion.views.default'),
+    (r'^$', 'web.observacion.views.default', {'page' : 'index'}),
+    (r'^static/([^/]+)$', 'web.observacion.views.default'),
     (r'^accounts/', include('django.contrib.auth.urls')),
-    (r'^accounts/$', 'cemet.observacion.views.account', {'section':'profile'})
+    (r'^accounts/$', 'web.observacion.views.account', {'section':'profile'})
 )
