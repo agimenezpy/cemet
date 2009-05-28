@@ -15,4 +15,3 @@ web/public/media/*
 scripts/*.log*
 scripts/*.txt
 dokuwiki/data/media/wiki/*
-dokuwiki/tpl/cemet/images/*
