@@ -1,0 +1,22 @@
+[
+    {
+        "model" : "observacion.observatorio",
+        "pk" : 1,
+        "fields" : {
+            "nombre" :  "Facultad Politécnica",
+            "siglas" : "FPUNA",
+            "sitio_web" : "http://www.pol.una.py/",
+            "pais" : "PY"
+        }
+    },
+    {
+        "model" : "observacion.observatorio",
+        "pk" : 2,
+        "fields" : {
+            "nombre" :  "Dirección Nacional de Aeronautica",
+            "siglas" : "DINAC",
+            "sitio_web" : "http://www.meteorologia.gov.py/",
+            "pais" : "PY"
+        }
+    }
+]

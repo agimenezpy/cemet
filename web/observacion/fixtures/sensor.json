@@ -1,0 +1,68 @@
+[
+    {
+        "model" : "observacion.sensor",
+        "pk" : 1,
+        "fields" : {
+            "estacion" : "1",
+            "variable" : "DD",
+            "descripcion" : "Dirección del Viento 1H",
+            "unidad" : "º",
+            "intervalo" : "3600"
+        }
+    },
+    {
+        "model" : "observacion.sensor",
+        "pk" : 2,
+        "fields" : {
+            "estacion" : "1",
+            "variable" : "FF",
+            "descripcion" : "Velocidad del Viento 1H",
+            "unidad" : "km/h",
+            "intervalo" : "3600"
+        }
+    },
+    {
+        "model" : "observacion.sensor",
+        "pk" : 3,
+        "fields" : {
+            "estacion" : "1",
+            "variable" : "P",
+            "descripcion" : "Presión 1H",
+            "unidad" : "hPa",
+            "intervalo" : "3600"
+        }
+    },
+    {
+        "model" : "observacion.sensor",
+        "pk" : 4,
+        "fields" : {
+            "estacion" : "1",
+            "variable" : "RH",
+            "descripcion" : "Humedad Relativa 1H",
+            "unidad" : "%",
+            "intervalo" : "3600"
+        }
+    },
+    {
+        "model" : "observacion.sensor",
+        "pk" : 5,
+        "fields" : {
+            "estacion" : "1",
+            "variable" : "T",
+            "descripcion" : "Temperatura 1H",
+            "unidad" : "ºC",
+            "intervalo" : "3600"
+        }
+    },
+    {
+        "model" : "observacion.sensor",
+        "pk" : 6,
+        "fields" : {
+            "estacion" : "1",
+            "variable" : "TD",
+            "descripcion" : "Temperatura PR 1H",
+            "unidad" : "ºC",
+            "intervalo" : "3600"
+        }
+    }
+]

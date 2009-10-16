@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<estaciones>{% for item in object_list %}
+<estacion id="{{ item.id }}">
+<nombre value="{{ item.nombre }}"/>
+<codigo value="{{ item.codigo }}"/>
+<ubicacion value="{{ item.ubicacion }}"/>
+</estacion>{% endfor %}
+</estaciones>

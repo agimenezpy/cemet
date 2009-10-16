@@ -1,79 +1,79 @@
 MAP
- OUTPUTFORMAT
-  NAME agg
-  DRIVER AGG/PNG
-  IMAGEMODE RGB
-  FORMATOPTION "INTERLACE=false"
-  MIMETYPE "image/png"
- END
- FONTSET "fonts.lst"
- IMAGETYPE agg
- MAXSIZE 4000
- SIZE 800 800
- EXTENT -62.638425 -27.571456 -54.257109 -19.294147
- UNITS meters
- IMAGECOLOR "#80B1D3"
- WEB
-  METADATA
-   wms_srs "epsg:4326 epsg:32721"
-   wms_onlineresource "http://localhost/wms?"
-   labelcache_map_edge_buffer "-10"
-   wms_title "Asuncion, PY"
-  END
- END
- CONFIG "PROJ_LIB" "/usr/share/proj/"
- CONFIG "MS_ERRORFILE" "stderr"
- PROJECTION
- "+init=epsg:4326"
- END
-    LAYER
-  TYPE POLYGON
-  STATUS DEFAULT
-  GROUP "default"
-  NAME "world"
-  DATA "/media/KINGSTON/Facultad/cemet/map/world_borders.shp"
-        SIZEUNITS pixels
-  MAXSCALEDENOM 100000000
-  EXTENT -180 -90 180.000000 83.623596
+    OUTPUTFORMAT
+        NAME agg
+        DRIVER AGG/PNG
+        IMAGEMODE RGB
+        FORMATOPTION "INTERLACE=false"
+        MIMETYPE "image/png"
+    END
+    FONTSET "fonts.lst"
+    IMAGETYPE agg
+    MAXSIZE 4000
+    SIZE 800 800
+    EXTENT -62.638425 -27.571456 -54.257109 -19.294147
+    UNITS meters
+    IMAGECOLOR "#80B1D3"
+    WEB
         METADATA
-   wms_srs "epsg:4326"
-   wms_title "world"
-   wms_group_title "default"
-  END
+            wms_srs "epsg:4326 epsg:32721"
+            wms_onlineresource "http://localhost/wms?"
+            labelcache_map_edge_buffer "-10"
+            wms_title "Asuncion, PY"
+        END
+    END
+    CONFIG "PROJ_LIB" "/usr/share/proj/"
+    CONFIG "MS_ERRORFILE" "stderr"
+    PROJECTION
+    "+init=epsg:4326"
+    END
+    LAYER
+        TYPE POLYGON
+        STATUS DEFAULT
+        GROUP "default"
+        NAME "world"
+        DATA "/home/agimenez/Desktop/cemetwiki/cemet/map/world_borders.shp"
+        SIZEUNITS pixels
+        MAXSCALEDENOM 100000000
+        EXTENT -180 -90 180.000000 83.623596
+        METADATA
+            wms_srs "epsg:4326"
+            wms_title "world"
+            wms_group_title "default"
+        END
         PROJECTION
-   "+init=epsg:4326"
-  END
+            "+init=epsg:4326"
+        END
         CLASS
-   STYLE
-    COLOR "#F5F5F5"
-    OUTLINECOLOR "#B3A895"
-    WIDTH 1
-   END
-  END
- END
- LAYER
-  TYPE POLYGON
-  STATUS DEFAULT
-  GROUP "default"
-  NAME "paraguay"
-  DATA "/media/KINGSTON/Facultad/cemet/map/pydpto.shp"
-  SIZEUNITS pixels
-  MAXSCALEDENOM 100000000
-  EXTENT -81414.425199 6950131.660985 778278.875001 7864759.500000
-  METADATA
-   wms_srs "epsg:32721 epsg:4326"
-   wms_title "paraguay"
-   wms_group_title "default"
-  END
-  PROJECTION
-   "+proj=utm +zone=21 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
-  END
-  CLASS
-   STYLE
-    COLOR "#F5F5F5"
-    OUTLINECOLOR "#B3A895"
-    WIDTH 1
-   END
+            STYLE
+                COLOR "#F5F5F5"
+                OUTLINECOLOR "#B3A895"
+                WIDTH 1
+            END
+        END
+    END
+    LAYER
+        TYPE POLYGON
+        STATUS DEFAULT
+        GROUP "default"
+        NAME "paraguay"
+        DATA "/home/agimenez/Desktop/cemetwiki/cemet/map/pydpto.shp"
+        SIZEUNITS pixels
+        MAXSCALEDENOM 100000000
+        EXTENT -81414.425199 6950131.660985 778278.875001 7864759.500000
+        METADATA
+            wms_srs "epsg:32721 epsg:4326"
+            wms_title "paraguay"
+            wms_group_title "default"
+        END
+        PROJECTION
+            "+proj=utm +zone=21 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+        END
+        CLASS
+            STYLE
+                COLOR "#F5F5F5"
+                OUTLINECOLOR "#B3A895"
+                WIDTH 1
+            END
             LABEL
                 COLOR 0 0 0
                 OUTLINECOLOR 255 255 255
@@ -82,6 +82,6 @@ MAP
                 SIZE 6
                 POSITION auto
             END
-  END
- END
+        END
+    END
 END

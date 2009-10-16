@@ -1,0 +1,14 @@
+[
+  {
+    "model": "observacion.estacion",
+    "pk": 1,
+    "fields": {
+      "nombre": "Aeropuerto Internacional Silvio Petirossi",
+      "tipo": "M",
+      "ubicacion" : "POINT (-57.51666 -25.25)",
+      "elevacion" : "120",
+      "observatorio" : "2",
+      "codigo" : "SGAS"
+    }
+  }
+]

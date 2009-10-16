@@ -1,6 +1,6 @@
 # -*- coding: iso-8859-1 -*-
 from django.contrib import admin
-import django.contrib.gis.admin as admingis
+from django.contrib.gis import admin as admingis
 from django.conf import settings
 from web.observacion.models import *
 
@@ -9,30 +9,17 @@ class PaisAdmin(admin.ModelAdmin):
     list_display = ['codigo_pais', 'nombre']
     search_fields = ['nombre']
 
-class RegionAdmin(admingis.GeoModelAdmin):
-    list_per_page = 15
-    list_display = ['id', 'nombre']
-    search_fields = ['nombre']
-    
-    openlayers_url = '/media/js/OpenLayers.js'
-    default_zoom = 10
-    #max_resolution = 0.02197265625
-    #num_zoom = 17
-    max_extent = "-62.643768, -27.588337, -54.243896, -19.296669"
-    wms_url = 'http://wms.jpl.nasa.gov/wms.cgi?'
-    wms_layer = 'daily_terra'
-
-class OrganizacionAdmin(admin.ModelAdmin):
+class ObservatorioAdmin(admin.ModelAdmin):
     list_display = ['id', 'nombre', 'siglas', 'pais']
     search_fields = ['siglas']
     
 class VariablesInline(admin.TabularInline):
-    model = Medidor
+    model = Sensor
     raw_id_fields = ("variable",)
     extra = 1
 
 class EstacionAdmin(admingis.GeoModelAdmin):
-    list_display = ['id', 'nombre', 'tipo', 'comentario', 'norm_ubicacion', 'elevacion']
+    list_display = ['id', 'nombre', 'tipo', 'codigo', 'norm_ubicacion', 'elevacion']
     list_filter = ['tipo']
     list_per_page = 15
     # Para WMS local 
@@ -41,17 +28,15 @@ class EstacionAdmin(admingis.GeoModelAdmin):
     #max_resolution = 0.02197265625
     #num_zoom = 1
     #max_extent = "-62.643768, -27.588337, -54.243896, -19.296669"
-    #wms_url = 'http://cemet.pol.una.py/wms?'
+    #wms_url = 'http://localhost/wms?'
     #wms_layer = 'default'
     #display_wkt = True
     
     # Para Google
     openlayers_url = '/media/js/OpenLayers.js'
     default_zoom = 10
-    #max_resolution = 2445.9849046875001
     max_resolution = 156543.0339
-    num_zoom = 14
-    #max_extent = "-6973472.355132, -3177387.514255, -6038402.881363, -2175781.919753"
+    num_zoom = 17
     max_extent = '-20037508,-20037508,20037508,20037508'
     map_template = 'gis/admin/google.html'
     extra_js = ['http://maps.google.com/maps?file=api&amp;v=2&amp;key=%s' % settings.GOOGLE_MAPS_API_KEY]
@@ -60,14 +45,9 @@ class EstacionAdmin(admingis.GeoModelAdmin):
     display_srid = 4326
     fieldsets = (
         (None, {
-            'fields' : ('nombre', 'tipo', 'propietario')
-        }),
-        (u"Comentario", {
-            'classes' : ('collapse',),
-            'fields' : ('comentario',)
+            'fields' : ('codigo','nombre', 'tipo', 'observatorio')
         }),
         (u"Información Geográfica", {
-            'classes' : ('collapse',),
             'fields' : ('ubicacion', 'elevacion')
         })
     )
@@ -86,25 +66,23 @@ class EstacionAdmin(admingis.GeoModelAdmin):
     norm_ubicacion.short_description = u"ubicación geográfica"
     inlines = [VariablesInline]
 
-
-class UnidadAdmin(admin.ModelAdmin):
-    list_display = ['id', 'descripcion', 'notacion']
-    list_per_page = 15
-
 class VariableAdmin(admin.ModelAdmin):
-    list_display = ['codigo', 'descripcion', 'valor_inf', 'valor_sup', 'unidad']
+    list_display = ['codigo', 'descripcion']
     list_per_page = 15
 
-class MedidaAdmin(admin.ModelAdmin):
-    list_display = ['id', 'tiempo', 'estacion', 'variable', 'qc_desc', 'valor']
+#class MedidaAdmin(admin.ModelAdmin):
+#    list_display = ['id', 'tiempo', 'sensor', 'valor']
+#    list_per_page = 15
+#    list_filter = ['tiempo']
+#    raw_id_fields = ("sensor",)
+
+class SensorAdmin(admin.ModelAdmin):
+    list_display = ['id', 'estacion', 'descripcion','variable', 'unidad','intervalo']
     list_per_page = 15
-    list_filter = ['tiempo', 'qc_desc']
-    exclude = ('calidad',)
 
 admin.site.register(Pais, PaisAdmin)
-admin.site.register(Region, RegionAdmin)
-admin.site.register(Organizacion, OrganizacionAdmin)
-admin.site.register(Unidad, UnidadAdmin)
+admin.site.register(Observatorio, ObservatorioAdmin)
 admin.site.register(Variable, VariableAdmin)
 admin.site.register(Estacion, EstacionAdmin)
-admin.site.register(Medida, MedidaAdmin)
+#admin.site.register(Medida, MedidaAdmin)
+admin.site.register(Sensor, SensorAdmin)

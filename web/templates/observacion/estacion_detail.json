@@ -1,0 +1,9 @@
+{"id":"{{ object.id }}",
+"nombre":"{{ object.nombre }}",
+"codigo":"{{ object.codigo }}",
+"ubicacion":"{{ object.ubicacion }}",
+"elevacion":"{{ object.elevacion }}",
+"observatorio":"{{ object.observatorio_id }}",
+"sensores" : [{% for item in sensor_list %}
+{"id":"{{ item.id }}","descripcion":"{{ item.descripcion }}","variable":"{{ item.variable_id }}"}{% if not forloop.last %},{% endif %}{% endfor %}
+]}

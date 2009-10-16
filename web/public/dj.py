@@ -2,7 +2,7 @@
 import sys, os
 
 # Add a custom Python path.
-sys.path.insert(0, "/home/agimenez/Desktop/cemetwiki/cemet/")
+sys.path.insert(0, "/home/agimenez/Desktop/Politecnica/cemetwiki/cemet/")
 
 # Switch to the directory of your project. (Optional.)
 #os.chdir("/media/KINGSTON/Facultad/")

@@ -1,0 +1,10 @@
+{"id":"{{ object.id }}",
+"nombre":"{{ object.nombre }}",
+"siglas":"{{ object.siglas }}",
+"sitio_web":"{{ object.sitio_web }}",
+"pais":"{{ object.pais_id }}",
+"estaciones" : [{% for item in estacion_list %}
+{"id":"{{ item.id }}",
+"nombre":"{{ item.nombre }}",
+"codigo":"{{ item.codigo }}"}{% if not forloop.last %},{% endif %}{% endfor %}
+]}

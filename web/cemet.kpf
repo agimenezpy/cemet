@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Komodo Project File - DO NOT EDIT -->
-<project id="503cc39d-ce80-421d-a7cb-f856c6c93de5" kpf_version="4" name="cemet.kpf">
-<livefolder id="503cc39d-ce80-421d-a7cb-f856c6c93de5/admin" idref="503cc39d-ce80-421d-a7cb-f856c6c93de5" name="admin" url="file:///usr/share/python-support/python-django/django/contrib/admin">
-</livefolder>
-<preference-set idref="503cc39d-ce80-421d-a7cb-f856c6c93de5">
-  <boolean id="import_live">1</boolean>
-</preference-set>
-</project>

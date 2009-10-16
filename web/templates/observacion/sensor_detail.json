@@ -1,0 +1,6 @@
+{"id":"{{ object.id }}",
+"descripcion":"{{ object.descripcion }}",
+"unidad" : "{{ object.unidad }}",
+"intervalo" : "{{ object.intervalo }}",
+"variable":"{{ object.variable_id }}"
+}

@@ -5,10 +5,10 @@ from django.contrib.gis.db import models as gismodels
 
 class Pais(models.Model):
     codigo_pais = models.CharField(u"código de país", max_length=2, primary_key=True)
-    nombre = models.CharField(u"nombre de país", max_length=50)
+    nombre = models.CharField(u"nombre de país", max_length=60)
     
     def __unicode__(self):
-        return "%s - %s" % (self.codigo_pais, self.nombre)
+        return u"%s - %s" % (self.codigo_pais, self.nombre)
     
     class Meta:
         verbose_name = u"país"
@@ -16,47 +16,19 @@ class Pais(models.Model):
         db_table = "pais"
         ordering = ['codigo_pais']
 
-class Region(gismodels.Model):
-    nombre= models.CharField(u"nombre de región", max_length=50)
-    pais = models.ForeignKey(Pais, verbose_name=u"país", null=True, blank=True)
-    region = gismodels.PolygonField(u"región de interés")
-    objects = gismodels.GeoManager()
-    
-    def __unicode__(self):
-        return "%s - %s" % (self.id, self.nombre)
-    
-    class Meta:
-        verbose_name = u"región"
-        verbose_name_plural = "regiones"
-        db_table = "region"
-        ordering = ["id"]
-
-class Organizacion(models.Model):
-    nombre = models.CharField(u"nombre de organización", max_length=50)
-    siglas = models.CharField(u"siglas de organización", max_length=30)
-    sitio_web = models.URLField(u"sitio web",null=True)
+class Observatorio(models.Model):
+    nombre = models.CharField(u"nombre del observatorio", max_length=80)
+    siglas = models.CharField(u"siglas del observatorio", max_length=30)
+    sitio_web = models.URLField(u"sitio web",null=True,blank=True)
     pais = models.ForeignKey(Pais, verbose_name=u"país")
     
     def __unicode__(self):
-        return "%s - %s" % (self.siglas, self.nombre)
+        return u"%s - %s" % (self.siglas, self.nombre)
     
     class Meta:
-        verbose_name = u"organización"
-        verbose_name_plural = "organizaciones"
-        db_table = "organizacion"
-
-class Unidad(models.Model):
-    descripcion = models.CharField(u"descripción de unidad",max_length=50)
-    notacion = models.CharField(u"notación de unidad", max_length=20)
-    
-    def __unicode__(self):
-        return self.notacion
-    
-    class Meta:
-        verbose_name = "unidad"
-        verbose_name_plural = "unidades"
-        db_table = "unidad_medida"
-        ordering = ['id']
+        verbose_name = u"observatorio"
+        verbose_name_plural = "observatorios"
+        db_table = "observatorio"
 
 class VariableManager(models.Manager):
     def get(self, **kargs):
@@ -67,14 +39,11 @@ class VariableManager(models.Manager):
 
 class Variable(models.Model):
     codigo = models.CharField(u"código de variable",max_length=8, primary_key=True)
-    descripcion = models.CharField(u"descripción de variable", max_length=60)
-    unidad = models.ForeignKey(Unidad, verbose_name="unidad")
-    valor_inf = models.DecimalField(u"límite inferior", max_digits=10, decimal_places=2)
-    valor_sup = models.DecimalField(u"límite superior", max_digits=10, decimal_places=2)
+    descripcion = models.CharField(u"descripción de variable", max_length=80)
     objects = VariableManager()
     
     def __unicode__(self):
-        return "%s - %s (%s)" % (self.codigo, self.descripcion, self.unidad.notacion)
+        return u"%s - %s" % (self.codigo, self.descripcion)
     
     class Meta:
         verbose_name = "variable"
@@ -88,17 +57,17 @@ class Estacion(gismodels.Model):
         ('H', u"Hidrológica"),
         ('X', u"Hidrometeorológica")
     )
-    nombre = models.CharField(u"nombre de estación",max_length=50)
+    codigo = models.CharField(u"código de estación", null=True, max_length=40)
+    nombre = models.CharField(u"nombre de estación",max_length=80)
     tipo = models.CharField(u"tipo de estación", max_length=1, choices=TIPOS_ESTACIONES)
-    ubicacion = gismodels.PointField(u"ubicación geográfica")
+    ubicacion = gismodels.PointField(u"ubicación geográfica",srid=4326)
     elevacion = models.SmallIntegerField(u"elevación", help_text="metros")
-    propietario = models.ForeignKey(Organizacion, verbose_name=u"organización")
-    comentario = models.TextField("comentario", null=True)
-    variables = models.ManyToManyField(Variable, through='Medidor')
+    observatorio = models.ForeignKey(Observatorio, verbose_name=u"observatorio")
+    variables = models.ManyToManyField(Variable, through='Sensor')
     objects = gismodels.GeoManager()
     
     def __unicode__(self):
-        return "%s -  %s" % (self.id, self.nombre)
+        return u"%s -  %s" % (self.id, self.nombre)
     
     class Meta:
         verbose_name = u"estación"
@@ -106,35 +75,39 @@ class Estacion(gismodels.Model):
         db_table = "estacion"
         ordering = ["id"]
 
-class Medidor(models.Model):
+class Sensor(models.Model):
+    UNIDADES = (
+        (u"º", "Grados"),
+        ("km/h","Kilometros por hora"),
+        ("hPa","Hectopascal"),
+        ("%","Porcentual"),
+        (u"ºC","Grados Celcius")
+    )
+    MUESTREO = (
+        (3600, "1H"),
+        (10800, "3H"),
+        (300, "5M"),
+        (900, "15M")
+    )
     estacion = models.ForeignKey(Estacion, verbose_name=u"estación")
     variable = models.ForeignKey(Variable, verbose_name="variable")
+    descripcion = models.CharField(u"descripción de sensor", max_length=80,null=True,blank=True)
+    unidad = models.CharField(u"unidad de medida", choices=UNIDADES, help_text=u"utilice la notación de UDUNITS", max_length=10)
+    intervalo = models.IntegerField(u"intervalo de muestra", choices=MUESTREO, help_text="segundos")
     
     def __unicode__(self):
-        return "%s %s (%s)" % (self.estacion.nombre, self.variable.codigo, self.variable.unidad)
+        return u"%s - %s (%s)" % (self.estacion.nombre, self.variable.codigo, self.unidad)
     
     class Meta:
-        verbose_name = "medidor"
-        verbose_name_plural = "medidores"
-        db_table = "estacion_variable"
-        unique_together = ('variable', 'estacion')
+        verbose_name = "sensor"
+        verbose_name_plural = "sensores"
+        db_table = "sensor"
+        ordering = ["id"]
 
 class Medida(models.Model):
-    QC_DESCRIPTOR = (
-        ('Z', "Preliminar, Sin QC"),
-        ('C', "Aprobado"),
-        ('S', "Monitoreado"),
-        ('V', "Verificado"),
-        ('X', "Rechazado/errorneo"),
-        ('Q', "En duda"),
-        ('G', "Subjectivamento bueno"),
-        ('B', "Subjetivamente malo")
-    )
-    estacion = models.IntegerField(u"estación", db_column="estacion_id")
-    variable = models.CharField("variable", db_column="variable_id", max_length=8)
+    sensor = models.ForeignKey(Sensor, verbose_name=u"sensor")
     tiempo = models.DateTimeField(u"tiempo de medición")
     valor = models.FloatField(u"valor de medición")
-    qc_desc = models.CharField(u"descriptor de QC", max_length=1, default='Z', choices=QC_DESCRIPTOR)
     
     class Meta:
         verbose_name = "medida instantanea"
@@ -142,7 +115,7 @@ class Medida(models.Model):
         db_table = "medida"
 
     def __unicode__(self):
-        return "(%s) %s %s %s" % (self.tiempo, self.variable.codigo, self.estacion.id, self.valor)
+        return u"(%s) %s %s %s" % (self.tiempo, self.variable.codigo, self.estacion.id, self.valor)
     
 class Resumen(models.Model):
     TIPO_CONSOLIDACION = (
@@ -156,8 +129,7 @@ class Resumen(models.Model):
         ("M","Mensual"),
         ("Y","Anual"),
     )
-    estacion = models.IntegerField(u"estación", db_column="estacion_id")
-    variable = models.CharField("variable", db_column="variable_id", max_length=8)
+    sensor = models.ForeignKey(Sensor, verbose_name=u"sensor")
     fecha = models.DateField(u"fecha de agrupación")
     valor = models.FloatField(u"valor resumido")
     tipo = models.CharField(u"tipo de resumen", max_length="3", choices=TIPO_CONSOLIDACION)
@@ -170,4 +142,4 @@ class Resumen(models.Model):
         abstract = True
     
     def __unicode__(self):
-        return "(%s) %s %s %s %s %s" % (self.fecha, self.variable.codigo, self.estacion.id, self.valor, self.tipo, self.agrupacion)
+        return u"(%s) %s %s %s %s %s" % (self.fecha, self.variable.codigo, self.estacion.id, self.valor, self.tipo, self.agrupacion)

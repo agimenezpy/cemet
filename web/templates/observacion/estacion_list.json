@@ -1,0 +1,6 @@
+[{% for item in object_list %}
+{"id":"{{ item.id }}",
+"nombre":"{{ item.nombre }}",
+"codigo":"{{ item.codigo }}",
+"ubicacion":"{{ item.ubicacion }}"}{% if not forloop.last %},{% endif %}{% endfor %}
+]

@@ -1,0 +1,1 @@
+{% load my_filters %}{% autoescape off %}{{ object|tojson }}{% endautoescape %}

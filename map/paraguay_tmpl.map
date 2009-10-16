@@ -37,7 +37,7 @@ MAP
         STATUS DEFAULT
         GROUP "default"
         NAME "world"
-        DATA "/media/KINGSTON/Facultad/cemet/map/world_borders.shp"
+        DATA "/home/agimenez/Desktop/cemetwiki/cemet/map/world_borders.shp"
         SIZEUNITS pixels
         MAXSCALEDENOM 100000000
         EXTENT -180 -90 180.000000 83.623596
@@ -63,7 +63,7 @@ MAP
         STATUS DEFAULT
         GROUP "default"
         NAME "paraguay"
-        DATA "/media/KINGSTON/Facultad/cemet/map/pydpto.shp"
+        DATA "/home/agimenez/Desktop/cemetwiki/cemet/map/pydpto.shp"
         SIZEUNITS pixels
         MAXSCALEDENOM 100000000
         EXTENT -81414.425199 6950131.660985 778278.875001 7864759.500000

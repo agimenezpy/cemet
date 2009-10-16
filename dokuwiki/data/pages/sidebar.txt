@@ -1,5 +1,6 @@
 ====== Secciones ======
   * [[inicio|Inicio]]
+  * [[observacion:inicio|Observaciones Meteorológicas]]
   * [[productos:inicio|Productos Meteorológicos]]
   * [[academico:inicio|Área Académica]]
   * [[cemet:inicio|Acerca de]]
@@ -7,7 +8,7 @@
 ====== Área de Miembros ======
   * [[this>admin/|Administración de Datos]]
   * [[this>doku.php?id=Inicio&do=login|Administración de Contenidos]]
-  * [[this>accounes/|Mi Perfil]]
+  * [[this>accounts/|Mi Perfil]]
 
 ====== Enlaces Relacionados ======
   * [[http://www.pol.una.py/|Facultad Politécnica]]

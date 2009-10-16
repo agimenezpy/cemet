@@ -1,0 +1,1 @@
+{% load my_filters %}{% autoescape off %}[{% for item in object_list %}{{ item|tojson }}{% if not forloop.last %},{% endif %}{% endfor %}]{% endautoescape %}

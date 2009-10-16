@@ -9,7 +9,7 @@
 $conf['start']       = 'Inicio';
 $conf['title']          = 'Centro Meteorol&oacute;gico';
 $conf['lang']           = 'es';
-$conf['savedir']        = '/home/agimenez/Desktop/cemetwiki/dokuwiki/data/';
+$conf['savedir']        = '/home/agimenez/Desktop/Politecnica/cemetwiki/dokuwiki/data/';
 $conf['recent']         = 0;
 $conf['breadcrumbs']    = 0;
 $conf['youarehere']     = 1;
@@ -29,7 +29,7 @@ $conf['htmlok']      = 1;
  */
 //$conf['authtype']   = 'mysql';
 //require_once ("mysql.conf.php");
-$conf['authtype'] = 'pgsql';
+$conf['authtype'] = 'plain';
 $conf['defaultgroup']= 'cms';
 $conf['passcrypt']   = 'ssha';
 $conf['superuser']   = 'admin';    //The admin can be user or @group or comma separated list user1,@group1,user2
