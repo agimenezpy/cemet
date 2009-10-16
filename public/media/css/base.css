@@ -1,0 +1,84 @@
+/*
+    DJANGO Admin
+    by Wilson Miner wilson@lawrence.com
+*/
+
+/* Block IE 5 */
+@import "null.css?\"\{";
+
+/* Import other styles */
+@import url('global.css');
+@import url('layout.css');
+
+#right_panel {
+    width: 100%;   
+}
+
+#left_panel {
+    width: 0px;
+}
+
+body.login .logo h1 {
+    font-size: 1.8em;
+}
+
+table.login {
+    border: 1px solid #ccc;
+    background:white url(../img/admin/nav-bg-reverse.gif) repeat-x scroll 0pt -10px;
+}
+
+table.login h2 {
+    color:#666666;
+    font-size:1.4em;
+}
+
+#sidebar li.links {
+    list-style-type: none;
+}
+/*#sidebar {*/
+/*  float: left;*/
+/*  margin-left: 10px;;*/
+/*}*/
+/**/
+/*#sidebar ul.secs {*/
+/*  padding: 0px 0 5px 0;*/
+/*  margin: 0px;*/
+/*  list-style: none;*/
+/*}*/
+/**/
+/*#sidebar li.links li {*/
+/*  margin-left: 20px;*/
+/*  margin-right: 20px;*/
+/*  line-height: 30px;*/
+/*  /*padding-left: 15px;*/*/
+/*  /*border-bottom: 1px dashed #BDBDBD;*/
+/*  background: url(../img/img04.jpg) no-repeat left 50%;*/*/
+/*}*/
+/**/
+/*#sidebar li.links ul {*/
+/*  margin-bottom: 1.8em;*/
+/*  line-height: 1.5em;*/
+/*  list-style: none;*/
+/*  list-style-type: square;*/
+/*}*/
+/**/
+/*#sidebar h2 {*/
+/*  background: transparent url(../img/img02.gif) repeat-x scroll 0% 0%;*/
+/*  border:1px solid __lighter__;*/
+/*  padding: 7px 25px;*/
+/*  font-size: 1.4em;*/
+/*  color: __text__;*/
+/*  margin:0em 0pt 0.5em;*/
+/*}*/
+/**/
+/*#sidebar li.links a {*/
+/*  text-decoration: none;*/
+/*}*/
+/**/
+/*#sidebar li.links a:hover {*/
+/*  text-decoration: underline;*/
+/*}*/
+
+
+/* Import patch for IE 6 Windows */
+/*\*/ @import "patch-iewin.css"; /**/
