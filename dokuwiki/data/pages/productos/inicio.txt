@@ -1,0 +1,12 @@
+====== Modelos Numéricos ======
+<html>
+<link rel="stylesheet" type="text/css" href="/media/css/wikiadapt.css" />
+<script type="text/javascript" src="/media/js/campos.js"></script>
+<style type="text/css">
+.layer { position: absolute; left: 260px; width: 640px; height: 480px;}
+</style>
+<div id="color_field" class="layer" style="z-index: 10"></div>
+<div id="map_field" class="layer" style="z-index: 20"><img src="/brams/BASE.gif"</div>
+<div id="contour_field" class="layer" style="z-index: 30"></div>
+<div id="vector_field" class="layer" style="z-index: 40"></div>
+</html>
