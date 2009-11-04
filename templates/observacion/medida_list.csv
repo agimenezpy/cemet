@@ -1,0 +1,3 @@
+FECHA-HORA,MUESTRA
+{% load my_filters %}{% for item in object_list %}"{{ item.tiempo|date:"d/m/Y H:i:s" }}","{{ item.valor|lformat:"%.2f" }}"{% if not forloop.last %}
+{% endif %}{% endfor %}

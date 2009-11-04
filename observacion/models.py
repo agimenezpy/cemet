@@ -113,9 +113,10 @@ class Medida(models.Model):
         verbose_name = "medida instantanea"
         verbose_name_plural = "medidas"
         db_table = "medida"
+        unique_together = ("sensor","tiempo")
 
     def __unicode__(self):
-        return u"(%s) %s %s %s" % (self.tiempo, self.variable.codigo, self.estacion.id, self.valor)
+        return u"(%s) %s %s" % (self.tiempo, self.sensor, self.valor)
     
 class Resumen(models.Model):
     TIPO_CONSOLIDACION = (

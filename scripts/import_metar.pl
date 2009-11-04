@@ -26,7 +26,7 @@ sub main {
         my $station;
         my $sens;
         my %estaciones = ();
-        my $last_time = "";
+        my %last_time = ();
         eval {
             foreach my $line (<>) {
                 chomp $line;
@@ -35,7 +35,10 @@ sub main {
                 if (%report && !exists($report{"ERROR"})) {
                     my @result = processMetar(\%report);
                     my @date = split /^([0-9]{4})\/([0-9]{2})\/([0-9]{2})/, $fecha;
-                    my ($hour,$minute) = ($report{'obsTime'}{'hour'}, $report{'obsTime'}{'minute'});
+                    my ($day,$hour,$minute) = ($report{'obsTime'}{'day'},$report{'obsTime'}{'hour'}, $report{'obsTime'}{'minute'});
+                    if ($date[3] != $day) {
+                        $date[3] = $day;
+                    }
                     $fecha = "$date[1]-$date[2]-$date[3] $hour:$minute:00+00";
                     if ($tiempo ne "$date[1]-$date[2]") {
                         $tiempo = "$date[1]-$date[2]";
@@ -64,9 +67,9 @@ sub main {
                         }
                         $lastCount = 0;
                     }
-                    if ($station and $fecha ne $last_time) {
+                    if ($station && !defined($last_time{$fecha})) {
                         #printf "$fecha %s,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n", @result;
-                        $last_time = $fecha;
+                        $last_time{$fecha} = "ok";
                         if ($result[1] != -1) { # DD
                             $sensor->execute($$station[0], 'DD');
                             $sens = $sensor->fetch();

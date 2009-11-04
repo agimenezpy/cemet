@@ -1,5 +1,4 @@
 from django.conf.urls.defaults import *
-from web.observacion.model_info import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,10 +15,11 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/(.*)', admin.site.root),
-    (r'^$', 'web.observacion.views.default', {'page' : 'index'}),
-    (r'^static/([^/]+)$', 'web.observacion.views.default'),
-    (r'^(?P<format>json|xml|html|csv)/(?P<model>\w+)/$', 'web.observacion.views.list_handler'),
-    (r'^(?P<format>json|xml|html|csv)/(?P<model>\w+)/(?P<object_id>\d+)/$', 'web.observacion.views.detail_handler'),
+    (r'^$', 'observacion.views.default', {'page' : 'index'}),
+    (r'^static/([^/]+)$', 'observacion.views.default'),
+    (r'^(?P<format>gviz|json|xml|html|csv)/medida/(?P<sensor_id>\w+)/(?P<fecha>[0-9]{14})/(?P<ws>\d+[YmdHMS])?$', 'observacion.views.medida'),
+    (r'^(?P<format>json|xml|html|csv)/(?P<model>\w+)/$', 'observacion.views.list_handler'),
+    (r'^(?P<format>json|xml|html|csv)/(?P<model>\w+)/(?P<object_id>\w+)/$', 'observacion.views.detail_handler'),
     (r'^accounts/', include('django.contrib.auth.urls')),
-    (r'^accounts/$', 'web.observacion.views.account', {'section':'profile'})
+    (r'^accounts/$', 'observacion.views.account', {'section':'profile'})
 )

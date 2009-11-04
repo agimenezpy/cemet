@@ -1,0 +1,2 @@
+{"id":"{{ object.codigo }}",
+"nombre":"{{ object.descripcion }}"}

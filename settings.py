@@ -68,7 +68,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'web.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -84,8 +84,8 @@ INSTALLED_APPS = (
     'django.contrib.gis',
     #'django.contrib.sessions',
     'django.contrib.sites',
-    'web.observacion'
+    'observacion'
 )
 
 LOGIN_REDIRECT_URL = "/"
-GOOGLE_MAPS_API_KEY='abcdefg'
+GOOGLE_MAPS_API_KEY='ABQIAAAA2EhgZ1jVWk36csfuDTqSMRRSIOWjXy1zsK4u2a3hmFiLU4CwkBRv_oU0ni1QI4TlSwwx2t9tP9iY1w'

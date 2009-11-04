@@ -6,12 +6,16 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_page
 from django.views.generic import list_detail
 from django.contrib.contenttypes.models import ContentType
+from datetime import datetime, timedelta
+from observacion.models import Medida, Sensor
+from re import match
 
 CONTENT = {
     "json" : "text/plain",
     "xml" : "text/xml",
     "html" : "text/html",
-    "csv" : "text/plain"
+    "csv" : "text/csv",
+    "gviz" : "text/plain"
 }
 
 TITULOS = {
@@ -76,6 +80,46 @@ def detail_handler(request, format, model, object_id):
     except:
         raise Http404()
 
+def medida(request, format, sensor_id, fecha, ws="1d"):
+    try:
+        numero, cual = match("(\d+)([YmdHMS])", ws).groups()
+        if cual == "Y":
+            delta = timedelta(days=365*int(numero))
+        elif cual == "m":
+            delta = timedelta(days=30*int(numero))
+        elif cual == "d":
+            delta = timedelta(days=1*int(numero))
+        elif cual == "H":
+            delta = timedelta(hours=int(numero))
+        elif cual == "M":
+            delta = timedelta(minutes=int(numero))
+        elif cual == "S":
+            delta = timedelta(seconds=int(numero))
+        fecha_final = datetime.strptime(fecha, "%Y%m%d%H%M%S")
+        fecha_inicial = fecha_final - delta
+        if format != "gviz":
+            return list_detail.object_list(
+                request,
+                queryset = Medida.objects.filter(sensor__id__exact=sensor_id, tiempo__range=(fecha_inicial, fecha_final)).order_by("tiempo"),
+                template_name = "observacion/medida_list.%s" % (format),
+                mimetype = "%s; charset=iso8859-1" % (CONTENT[format])
+            )
+        else:
+            import gviz_api
+            s = Sensor.objects.get(pk=sensor_id)
+            description = {"tiempo": ("string", "Tiempo de Muestra"),
+                           "valor": ("number", "%s, %s" % (s.descripcion, s.unidad))}
+            data_table = gviz_api.DataTable(description)
+            data_table.LoadData(map(to_dict, Medida.objects.filter(sensor__id__exact=sensor_id, tiempo__range=(fecha_inicial, fecha_final)).order_by("tiempo")))
+            return render_to_response("observacion/medida_list.gviz",
+                                      {'json_data' : data_table.ToJSonResponse(columns_order=("tiempo", "valor"),
+                                                     order_by="tiempo")},
+                                      RequestContext(request), mimetype="%s; charset=iso8859-1" % (CONTENT[format]))
+    except Exception, e:
+        raise e
+    #except:
+    #    raise Http404()
+
 def get_filter(model, dep_class, object_id):
     if model == "estacion":
         return dep_class.objects.filter(estacion=object_id)
@@ -83,3 +127,6 @@ def get_filter(model, dep_class, object_id):
         return dep_class.objects.filter(observatorio=object_id)
     else:
         return None
+
+def to_dict(item):
+    return {"tiempo" : item.tiempo, "valor":item.valor}

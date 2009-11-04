@@ -8,7 +8,7 @@ sys.path.insert(0, "/home/agimenez/Desktop/Politecnica/cemetwiki/cemet/")
 #os.chdir("/media/KINGSTON/Facultad/")
 
 # Set the DJANGO_SETTINGS_MODULE environment variable.
-os.environ['DJANGO_SETTINGS_MODULE'] = "web.settings"
+os.environ['DJANGO_SETTINGS_MODULE'] = "settings"
 
 from django.core.servers.fastcgi import runfastcgi
 runfastcgi(method="threaded", daemonize="false")

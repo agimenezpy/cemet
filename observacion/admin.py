@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.gis import admin as admingis
 from django.conf import settings
-from web.observacion.models import *
+from observacion.models import *
 
 class PaisAdmin(admin.ModelAdmin):
     list_per_page = 15
@@ -70,11 +70,11 @@ class VariableAdmin(admin.ModelAdmin):
     list_display = ['codigo', 'descripcion']
     list_per_page = 15
 
-#class MedidaAdmin(admin.ModelAdmin):
-#    list_display = ['id', 'tiempo', 'sensor', 'valor']
-#    list_per_page = 15
-#    list_filter = ['tiempo']
-#    raw_id_fields = ("sensor",)
+class MedidaAdmin(admin.ModelAdmin):
+    list_display = ['id', 'tiempo', 'sensor', 'valor']
+    list_per_page = 15
+    list_filter = ['tiempo']
+    raw_id_fields = ("sensor",)
 
 class SensorAdmin(admin.ModelAdmin):
     list_display = ['id', 'estacion', 'descripcion','variable', 'unidad','intervalo']
@@ -84,5 +84,5 @@ admin.site.register(Pais, PaisAdmin)
 admin.site.register(Observatorio, ObservatorioAdmin)
 admin.site.register(Variable, VariableAdmin)
 admin.site.register(Estacion, EstacionAdmin)
-#admin.site.register(Medida, MedidaAdmin)
+admin.site.register(Medida, MedidaAdmin)
 admin.site.register(Sensor, SensorAdmin)

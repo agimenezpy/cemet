@@ -1,0 +1,4 @@
+[{% for item in object_list %}
+{"tiempo":"{{ item.tiempo|date:"d/m/Y H:i:s" }}",
+"valor":"{{ item.valor }}"}{% if not forloop.last %},{% endif %}{% endfor %}
+]
