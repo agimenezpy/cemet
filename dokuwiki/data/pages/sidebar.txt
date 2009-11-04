@@ -1,7 +1,7 @@
 ====== Secciones ======
   * [[inicio|Inicio]]
-  * [[observacion:inicio|Observaciones Meteorológicas]]
-  * [[productos:inicio|Productos Meteorológicos]]
+  * [[observacion:inicio|Observaciones]]
+  * [[productos:inicio|Modelos Numéricos]]
   * [[academico:inicio|Área Académica]]
   * [[cemet:inicio|Acerca de]]
 

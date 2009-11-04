@@ -1,34 +1,59 @@
+====== Observaciones Meteorológicas ======
 <html>
+<link rel="stylesheet" type="text/css" href="/media/css/wikiadapt.css" />
+<link rel="stylesheet" type="text/css" href="/media/css/widgets.css" />
 <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/media/js/i18n.js"></script>
+<script type="text/javascript" src="/media/js/core.js"></script>
+<script type="text/javascript" src="/media/js/calendar.js"></script>
+<script type="text/javascript" src="/media/js/admin/DateTimeShortcuts.js"></script>
 <script type="text/javascript">
-      google.load('visualization', '1', {packages: ['linechart']});
- </script>
-<script type="text/javascript">
-var query = new google.visualization.Query('http://spreadsheets.google.com/tq?key=pCQbetd-CptGXxxQIG7VFIQ&pub=1');
-function drawVisualization() {
-  // To see the data that this visualization uses, browse to
-  // http://spreadsheets.google.com/ccc?key=pCQbetd-CptGXxxQIG7VFIQ 
-  // Apply query language.
-  query.setQuery('SELECT A,D WHERE D > 100 ORDER BY D');
-  
-  // Send the query with a callback function.
-  query.send(handleQueryResponse);
-}
-
-var visualization; 
-
-function handleQueryResponse(response) {
-  if (response.isError()) {
-    alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-    return;
-  }
-  var data = response.getDataTable();
-  if (!visualization) {
-       visualization = new google.visualization.LineChart(document.getElementById('visualization'));
-  }
-  visualization.draw(data, {legend: 'bottom'});
-}
-drawVisualization();
+google.load('visualization', '1', {packages: ['linechart','table']});
 </script>
-<div id="visualization" style="height: 400px; width: 400px;></div>
+<script type="text/javascript" src="/media/js/observacion.js"></script>
+<div class="level1">
+<form name="obs">
+  <fieldset>
+    <div class="form-row" style="width: 600px;">
+      <div><b>Elija una estación y un sensor de variable</b></div>
+      <div><label for="id_estacion">Estacion:</label>
+        <select id="id_estacion" name="id_estacion" onchange="sensor_list(this)"><option value="Ninguna">Ninguna</option></select>
+      </div>
+      <div><label for="id_sensor">Sensor:</label>
+        <select id="id_sensor" name="id_sensor" onchange="medida_list(this)"><option>Ninguna</option></select>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+<table border="0">
+<tr valign="top"><td width="50%"><div id="estacion_detail"></div></td>
+<td width="50%"><div id="sensor_detail"></div>
+<div id="tiempo" style="display: none" class="form-row">
+  <fieldset>
+  <div><b>Elija la fecha y hora final con la ventana de tiempo correspondiente</b></div>
+  <div style="text-align: left;"><label for="id_fecha">Fecha:</label>
+    <input type="text" id="id_fecha" class="vDateField" onchange="validar_fecha(this);" size="7" value="">
+  </div>
+  <div style="text-align: left;"><label for="id_hora">Hora:</label>
+    <input id="id_hora" type="text" class="vTimeField" onchange="validar_hora(this);" size="5" value="">
+  </div>
+  <div style="text-align: left;"><label for="id_hora">Ventana:</label>
+    <select id="id_ventana" name="id_ventana">
+      <option value="6H" default>Seis horas</option>
+      <option value="12H" default>Doce horas</option>
+      <option value="1d" default>Un día</option>
+      <option value="5d">Cinco días</option>
+    </select>
+  </div>
+  <div><center>
+    <input id="id_mostrar" type="button" onclick="obtener_datos()" size="5" value="Mostrar">
+    <a id="id_descargar" href="javascript:void(0)" onclick="descargar_datos()">Descargar</a>
+  </center></div>
+  </fieldset>
+</div>
+</td>
+</table>
+<div id="linea" style="height: 400px; width: 800px;"></div>
+<center><div id="tabla" style="width: 600px;"></div></center>
 </html>
