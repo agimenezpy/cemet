@@ -1,7 +1,19 @@
 ====== Salida del BRAMS ======
+  * Elija la fecha y hora de la salida
+<html>
+<div style="text-align: left;"><label for="id_fecha">Fecha:</label>
+  <input type="text" id="id_fecha" name="id_fecha" class="vDateField" onchange="cambiar_campo();" size="7" value="">
+</div>
+<div style="text-align: left;"><label for="id_hora">Hora:</label>
+<select id="id_hora" name="id_hora" onchange="cambiar_campo();">
+<option value="00" default>00</option>
+<option value="12">12</option>
+</select>
+</div>
+</html>
   * Campo de Color
 <html>
-<select id="color_S" name="S" onchange="cambiar_campo(this);">
+<select id="color_S" name="S" onchange="cambiar_campo();" class="capa">
 <option value="Nada" default>Ninguno</option>
 <option value="WINDSPEED2">Velocidad del Viento</option>
 <option value="TEMP2">Temperatura</option>
@@ -14,7 +26,7 @@
 </html>
   * Campo de Contorno
 <html>
-<select id="contour" name="C" onchange="cambiar_campo(this);">
+<select id="contour" name="C" onchange="cambiar_campo();" class="capa">
 <option value="Nada" default>Ninguno</option>
 <option value="WINDSPEED2">Velocidad del Viento</option>
 <option value="TEMP2">Temperatura</option>
@@ -27,7 +39,7 @@
 </html>
   * Campo de Vector
 <html>
-<select id="vector" name="V" onchange="cambiar_campo(this);">
+<select id="vector" name="V" onchange="cambiar_campo();" class="capa">
 <option value="Nada" default>Ninguno</option>
 <option value="WIND2">Viento</option>
 </select>

@@ -1,12 +1,38 @@
 ====== Modelos Numéricos ======
 <html>
 <link rel="stylesheet" type="text/css" href="/media/css/wikiadapt.css" />
+<link rel="stylesheet" type="text/css" href="/media/css/widgets.css" />
 <script type="text/javascript" src="/media/js/campos.js"></script>
+<script type="text/javascript" src="/media/js/i18n.js"></script>
+<script type="text/javascript" src="/media/js/core.js"></script>
+<script type="text/javascript" src="/media/js/calendar.js"></script>
+<script type="text/javascript" src="/media/js/admin/DateTimeShortcuts.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/dragdrop/dragdrop-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.8.0r4/build/slider/slider-min.js"></script>
 <style type="text/css">
 .layer { position: absolute; left: 260px; width: 640px; height: 480px;}
+#slider-bg {
+    background:url(/media/img/slider_bg_fad.gif) 5px 0 repeat-x;
+    width: 497px;
+}
+.yui-slider-thumb {
+    width: 17px;
+}
 </style>
-<div id="color_field" class="layer" style="z-index: 10"></div>
-<div id="map_field" class="layer" style="z-index: 20"><img src="/brams/BASE.gif"</div>
-<div id="contour_field" class="layer" style="z-index: 30"></div>
-<div id="vector_field" class="layer" style="z-index: 40"></div>
+Desplazamiento de Hora: <span id="slider-value">+H00</span>
+<div id="slider-bg" class="yui-h-slider" tabindex="-1" title="Slider">
+    <div id="slider-thumb" class="yui-slider-thumb"><img src="/media/img/thumb-n.gif"></div>
+</div>
+<div id="color_field" class="layer" style="z-index: -40"></div>
+<div id="map_field" class="layer" style="z-index: -30"><img src="/brams/BASE.gif"</div>
+<div id="contour_field" class="layer" style="z-index: -20"></div>
+<div id="vector_field" class="layer" style="z-index: -10"></div>
+<script type='text/javascript'>iniciar();</script>
+
+<input autocomplete="off" id="slider-converted-value" type="hidden" value="00" size="2" maxlength="2" />
+
+<script type="text/javascript">
+slider();
+</script>
 </html>
