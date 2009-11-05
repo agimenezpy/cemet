@@ -8,7 +8,7 @@
 <select id="id_hora" name="id_hora" onchange="cambiar_campo();">
 <option value="00" default>00</option>
 <option value="12">12</option>
-</select>
+</select>Z
 </div>
 </html>
   * Campo de Color

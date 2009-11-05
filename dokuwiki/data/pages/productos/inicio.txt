@@ -20,7 +20,7 @@
     width: 17px;
 }
 </style>
-Desplazamiento de Hora: <span id="slider-value">+H00</span>
+Desplazamiento de Hora: <span id="slider-value">H+00</span>
 <div id="slider-bg" class="yui-h-slider" tabindex="-1" title="Slider">
     <div id="slider-thumb" class="yui-slider-thumb"><img src="/media/img/thumb-n.gif"></div>
 </div>
