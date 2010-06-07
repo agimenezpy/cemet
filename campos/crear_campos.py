@@ -1,3 +1,4 @@
+# -*- coding: latin-1 -*-
 #!/usr/bin/env python
 import ConfigParser
 import sys
@@ -5,7 +6,7 @@ from datetime import datetime
 from grads import GaNum
 from os import path,mkdir
 
-PRE = """
+PRE = u"""
 clear
 set display color white
 set mpdraw off
@@ -16,7 +17,7 @@ set csmooth on
 sa
 """
 
-TITULO = """
+TITULO = u"""
 set string 1 c 2 0
 set strsiz 0.19
 draw string 4.7 8.3 %s
@@ -45,12 +46,12 @@ set ccolor %s
 run arrow.gs %s 9.1 0.1 0.3 20 %s
 """
 
-BASEMAP = """
+BASEMAP = u"""
 set ccolor 4
 d %s - %s
 """
 
-POST = """
+POST = u"""
 printim %s.gif x640 y480 -t 0
 """
 
@@ -89,7 +90,7 @@ if __name__ == '__main__':
                         ga(PRE)
                         ga('set mpdraw on')
                         ga('set mpdset hires')
-                        ga('set z %d' % 1)
+                        ga('set level %d' % 0)
                         ga(BASEMAP % (s, s))
                         ga("printim %s.gif x640 y480 -t 0 -t 4" % (outdir + "/BASE"))
                         r_base = True
@@ -101,7 +102,7 @@ if __name__ == '__main__':
                                 if n > 0:
                                     lev = str(n)
                                 ga(PRE)
-                                ga('set z %d' % n)
+                                ga('set lev %d' % n)
                                 ga(TITULO % ("TIEMPO DE PRONOSTICO: %s h %s" % (delta, ahora.strftime("%H %Z %a, %d %b %Y").title())))
                                 ga(COLORMAP % (cfg.get(s,'paleta'), s, unit))
                                 ga(POST % (outdir + "/" + nombre + lev + delta + "S"))
@@ -114,7 +115,7 @@ if __name__ == '__main__':
                                 if n > 0:
                                     lev = str(n) 
                                 ga(PRE)
-                                ga('set z %d' % n)
+                                ga('set lev %d' % n)
                                 ga(TITULO % ("TIEMPO DE PRONOSTICO: %s h %s" % (delta, ahora.strftime("%H %Z %a, %d %b %Y").title())))
                                 ga(CONTOUR % (cfg.get(s,'ccolor'), s, unit))
                                 ga(POST % (outdir + "/" + nombre + lev + delta + "C"))
@@ -128,7 +129,7 @@ if __name__ == '__main__':
                                     lev = str(n) 
                                 ga(PRE)
                                 ga(TITULO % ("TIEMPO DE PRONOSTICO: %s h %s" % (delta, ahora.strftime("%H %Z %a, %d %b %Y").title())))
-                                ga('set z %d' % n)
+                                ga('set lev %d' % n)
                                 ga(VECTOR % (cfg.get(s,'ccolor'), s, unit))
                                 ga(POST % (outdir + "/" + nombre + lev + delta + "V"))
                 
