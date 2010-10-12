@@ -15,32 +15,34 @@
 <html>
 <select id="color_S" name="S" onchange="cambiar_campo();" class="capa">
 <option value="Nada" default>Ninguno</option>
-<option value="WINDSPEED2">Velocidad del Viento</option>
-<option value="TEMP2">Temperatura</option>
+<option value="HRVORT700">Vorticidad</option>
 <option value="TEMP2M">Temperatura a 2m</option>
 <option value="SLP">Presión a nivel del mar</option>
-<option value="PRESS2">Presión</option>
-<option value="RH2">Humedad Relativa</option>
-<option value="GEO2">Geopotential Height</option>
+<option value="RH700">Humedad Relativa</option>
+<option value="GEO200">Geopotential Height 200mbar</option>
+<option value="GEO500">Geopotential Height 500mbar</option>
+<option value="GEO850">Geopotential Height 850mbar</option>
 </select>
 </html>
   * Campo de Contorno
 <html>
 <select id="contour" name="C" onchange="cambiar_campo();" class="capa">
 <option value="Nada" default>Ninguno</option>
-<option value="WINDSPEED2">Velocidad del Viento</option>
-<option value="TEMP2">Temperatura</option>
+<option value="HRVORT700">Vorticidad</option>
 <option value="TEMP2M">Temperatura a 2m</option>
 <option value="SLP">Presión a nivel del mar</option>
-<option value="PRESS2">Presión</option>
-<option value="RH2">Humedad Relativa</option>
-<option value="GEO2">Geopotential Height</option>
+<option value="RH700">Humedad Relativa</option>
+<option value="GEO200">Geopotential Height 200mbar</option>
+<option value="GEO500">Geopotential Height 500mbar</option>
+<option value="GEO850">Geopotential Height 850mbar</option>
 </select>
 </html>
   * Campo de Vector
 <html>
 <select id="vector" name="V" onchange="cambiar_campo();" class="capa">
 <option value="Nada" default>Ninguno</option>
-<option value="WIND2">Viento</option>
+<option value="WIND200">Viento (200)</option>
+<option value="WIND500">Viento (500)</option>
+<option value="WIND850">Viento (850)</option>
 </select>
 </html>

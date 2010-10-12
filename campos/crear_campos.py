@@ -5,6 +5,9 @@ import sys
 from datetime import datetime
 from grads import GaNum
 from os import path,mkdir
+from re import match
+
+W,H = (640,480)
 
 PRE = u"""
 clear
@@ -52,7 +55,7 @@ d %s - %s
 """
 
 POST = u"""
-printim %s.gif x640 y480 -t 0
+printim %s.gif x%d y%d -t 0
 """
 
 if __name__ == '__main__':
@@ -62,6 +65,8 @@ if __name__ == '__main__':
             cfg = ConfigParser.RawConfigParser()
             cfg.read(sys.argv[1])
             fh = ga.open(sys.argv[2])
+            if len(sys.argv) == 4 and match("[0-9]+x[0-9]+",sys.argv[3]):
+                W,H = map(int,sys.argv[3].split("x"))
             qh = ga.query('dims')
             fecha = datetime.strptime(qh.time[0],"%HZ%d%b%Y")
             outdir = cfg.get("DEFAULT","directory") + "/" + fecha.strftime("%Y%m%d%H")
@@ -92,7 +97,7 @@ if __name__ == '__main__':
                         ga('set mpdset hires')
                         ga('set level %d' % 0)
                         ga(BASEMAP % (s, s))
-                        ga("printim %s.gif x640 y480 -t 0 -t 4" % (outdir + "/BASE"))
+                        ga("printim %s.gif x%d y%d -t 0 -t 4" % (outdir + "/BASE", W, H))
                         r_base = True
                     if cfg.has_option(s,"colormap"):
                         ga('set gxout shaded')
@@ -100,12 +105,14 @@ if __name__ == '__main__':
                             for n in niveles:
                                 lev = ""
                                 if n > 0:
-                                    lev = str(n)
+                                    lev = "%04d" % n
                                 ga(PRE)
                                 ga('set lev %d' % n)
                                 ga(TITULO % ("TIEMPO DE PRONOSTICO: %s h %s" % (delta, ahora.strftime("%H %Z %a, %d %b %Y").title())))
+                                if cfg.has_option(s, 'cint'):
+                                    ga('set cint %s' % cfg.get(s,'cint'))
                                 ga(COLORMAP % (cfg.get(s,'paleta'), s, unit))
-                                ga(POST % (outdir + "/" + nombre + lev + delta + "S"))
+                                ga(POST % ("%s/COLOR_%s_%s_%s" % (outdir,nombre,lev,delta), W, H))
                     if cfg.has_option(s,"contour"):
                         ga(PRE)
                         ga('set gxout contour')
@@ -113,12 +120,14 @@ if __name__ == '__main__':
                             for n in niveles:
                                 lev = ""
                                 if n > 0:
-                                    lev = str(n) 
+                                    lev = "%04d" % n
                                 ga(PRE)
                                 ga('set lev %d' % n)
                                 ga(TITULO % ("TIEMPO DE PRONOSTICO: %s h %s" % (delta, ahora.strftime("%H %Z %a, %d %b %Y").title())))
+                                if cfg.has_option(s, 'cint'):
+                                    ga('set cint %s' % cfg.get(s,'cint'))
                                 ga(CONTOUR % (cfg.get(s,'ccolor'), s, unit))
-                                ga(POST % (outdir + "/" + nombre + lev + delta + "C"))
+                                ga(POST % ("%s/CONTOUR_%s_%s_%s" % (outdir,nombre,lev,delta), W, H))
                     if cfg.has_option(s,"vector"):
                         ga(PRE)
                         ga('set gxout vector')
@@ -131,9 +140,9 @@ if __name__ == '__main__':
                                 ga(TITULO % ("TIEMPO DE PRONOSTICO: %s h %s" % (delta, ahora.strftime("%H %Z %a, %d %b %Y").title())))
                                 ga('set lev %d' % n)
                                 ga(VECTOR % (cfg.get(s,'ccolor'), s, unit))
-                                ga(POST % (outdir + "/" + nombre + lev + delta + "V"))
+                                ga(POST % ("%s/VECTOR_%s_%s_%s" % (outdir,nombre,lev,delta), W, H))
                 
         except Exception, e:
             print "Error al utilizar: %s" % e
     else:
-        print "utilizar: %s config salida_brams"
+        print "utilizar: %s config salida_brams [wxh]"

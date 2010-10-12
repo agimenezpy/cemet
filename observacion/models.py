@@ -1,7 +1,6 @@
 # -*- coding: iso-8859-1 -*-
 from django.db import models
 from django.contrib import admin
-from django.contrib.gis.db import models as gismodels
 
 class Pais(models.Model):
     codigo_pais = models.CharField(u"código de país", max_length=2, primary_key=True)
@@ -51,7 +50,7 @@ class Variable(models.Model):
         db_table = "variable"
         ordering = ['codigo']
 
-class Estacion(gismodels.Model):
+class Estacion(models.Model):
     TIPOS_ESTACIONES = (
         ('M', u"Meteorológica"),
         ('H', u"Hidrológica"),
@@ -60,11 +59,11 @@ class Estacion(gismodels.Model):
     codigo = models.CharField(u"código de estación", null=True, max_length=40)
     nombre = models.CharField(u"nombre de estación",max_length=80)
     tipo = models.CharField(u"tipo de estación", max_length=1, choices=TIPOS_ESTACIONES)
-    ubicacion = gismodels.PointField(u"ubicación geográfica",srid=4326)
+    longitud = models.FloatField(u"longitud",help_text="radianes")
+    latitud = models.FloatField(u"latitud",help_text="radianes")
     elevacion = models.SmallIntegerField(u"elevación", help_text="metros")
     observatorio = models.ForeignKey(Observatorio, verbose_name=u"observatorio")
     variables = models.ManyToManyField(Variable, through='Sensor')
-    objects = gismodels.GeoManager()
     
     def __unicode__(self):
         return u"%s -  %s" % (self.id, self.nombre)
@@ -114,6 +113,7 @@ class Medida(models.Model):
         verbose_name_plural = "medidas"
         db_table = "medida"
         unique_together = ("sensor","tiempo")
+        abstract = True
 
     def __unicode__(self):
         return u"(%s) %s %s" % (self.tiempo, self.sensor, self.valor)

@@ -1,6 +1,5 @@
 # -*- coding: iso-8859-1 -*-
 from django.contrib import admin
-from django.contrib.gis import admin as admingis
 from django.conf import settings
 from observacion.models import *
 
@@ -18,31 +17,10 @@ class VariablesInline(admin.TabularInline):
     raw_id_fields = ("variable",)
     extra = 1
 
-class EstacionAdmin(admingis.GeoModelAdmin):
+class EstacionAdmin(admin.ModelAdmin):
     list_display = ['id', 'nombre', 'tipo', 'codigo', 'norm_ubicacion', 'elevacion']
     list_filter = ['tipo']
     list_per_page = 15
-    # Para WMS local 
-    #openlayers_url = '/media/js/OpenLayers.js'
-    #default_zoom = 10
-    #max_resolution = 0.02197265625
-    #num_zoom = 1
-    #max_extent = "-62.643768, -27.588337, -54.243896, -19.296669"
-    #wms_url = 'http://localhost/wms?'
-    #wms_layer = 'default'
-    #display_wkt = True
-    
-    # Para Google
-    openlayers_url = '/media/js/OpenLayers.js'
-    default_zoom = 10
-    max_resolution = 156543.0339
-    num_zoom = 17
-    max_extent = '-20037508,-20037508,20037508,20037508'
-    map_template = 'gis/admin/google.html'
-    extra_js = ['http://maps.google.com/maps?file=api&amp;v=2&amp;key=%s' % settings.GOOGLE_MAPS_API_KEY]
-    units = 'm'
-    map_srid = 900913
-    display_srid = 4326
     fieldsets = (
         (None, {
             'fields' : ('codigo','nombre', 'tipo', 'observatorio')
@@ -53,7 +31,7 @@ class EstacionAdmin(admingis.GeoModelAdmin):
     )
     
     def norm_ubicacion(self, obj):
-        x, y = obj.ubicacion.x, obj.ubicacion.y
+        x, y = obj.longitud, obj.latitud
         
         xd = 'E'
         yd = 'N'

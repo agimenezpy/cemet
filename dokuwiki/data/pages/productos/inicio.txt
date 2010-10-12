@@ -24,6 +24,7 @@ Desplazamiento de Hora: <span id="slider-value">H+00</span>
 <div id="slider-bg" class="yui-h-slider" tabindex="-1" title="Slider">
     <div id="slider-thumb" class="yui-slider-thumb"><img src="/media/img/thumb-n.gif"></div>
 </div>
+<div id="basemap_field" class="layer" style="z-index: -50; left: 300px; top: 271px;"><img src="/brams/BASE_C.gif"</div>
 <div id="color_field" class="layer" style="z-index: -40"></div>
 <div id="map_field" class="layer" style="z-index: -30"><img src="/brams/BASE.gif"</div>
 <div id="contour_field" class="layer" style="z-index: -20"></div>
