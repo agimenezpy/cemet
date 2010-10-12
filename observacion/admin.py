@@ -26,7 +26,7 @@ class EstacionAdmin(admin.ModelAdmin):
             'fields' : ('codigo','nombre', 'tipo', 'observatorio')
         }),
         (u"Información Geográfica", {
-            'fields' : ('ubicacion', 'elevacion')
+            'fields' : ('longitud', 'latitud', 'elevacion')
         })
     )
     
