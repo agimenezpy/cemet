@@ -1,0 +1,35 @@
+- model: observacion.Unidad
+  pk: DEG
+  fields:
+    simbolo: °
+    descripcion: GRADOS
+
+- model: observacion.Unidad
+  pk: KMH
+  fields:
+    simbolo: km/h
+    descripcion: KILOMETROS POR HORA
+
+- model: observacion.Unidad
+  pk: HPA
+  fields:
+    simbolo: hPa
+    descripcion: HECTOPASCAL
+
+- model: observacion.Unidad
+  pk: POR
+  fields:
+    simbolo: \%
+    descripcion: PORCENTUAL
+
+- model: observacion.Unidad
+  pk: WM2
+  fields:
+    simbolo: w/m2
+    descripcion: WATT POR METRO CUADRADO
+
+- model: observacion.Unidad
+  pk: MM
+  fields:
+    simbolo: mm
+    descripcion: MILIMETROS

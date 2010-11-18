@@ -1,9 +1,0 @@
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Argentina', 'AR');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Bolivia', 'BO');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Brasil', 'BR');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Chile', 'CL');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Colombia', 'CO');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Perú', 'PE');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Paraguay', 'PY');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Uruguay', 'UY');
-INSERT INTO pais (nombre, codigo_pais) VALUES ('Venezuela', 'VE');

@@ -1,0 +1,16 @@
+- model : observacion.institucion
+  pk : 1
+  fields : 
+    nombre :  FACULTAD POLITECNICA
+    siglas : FP-UNA
+    dependencia: CENTRO METEOROLOGICO 
+    sitio_web : http://www.pol.una.py/
+    pais : PA
+
+- model : observacion.institucion
+  pk : 2
+  fields :
+    nombre :  DIRECCION NACIONAL DE AERONAUTICA CIVIL
+    siglas : DINAC
+    sitio_web : http://www.meteorologia.gov.py/
+    pais : PA

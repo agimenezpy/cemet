@@ -1,0 +1,70 @@
+- model: observacion.Medidor
+  pk: 1
+  fields:
+    estacion: 28
+    variable: DD
+    unidad: DEG
+
+- model: observacion.Medidor
+  pk: 2
+  fields:
+    estacion: 28
+    variable: FF
+    unidad: KMH
+
+- model: observacion.Medidor
+  pk: 3
+  fields: 
+    estacion: 28
+    variable: P
+    unidad: HPA
+
+- model: observacion.Medidor
+  pk: 4
+  fields:
+    estacion: 28
+    variable: RH
+    unidad: POR
+
+- model: observacion.Medidor
+  pk: 5
+  fields: 
+    estacion: 28
+    variable: T
+    unidad: DEGC
+
+- model: observacion.Medidor
+  pk: 6
+  fields: 
+    estacion: 28
+    variable: TD
+    unidad : DEGC
+
+- model: observacion.Medidor
+  pk: 7
+  fields: 
+    estacion: 28
+    variable: PCP
+    unidad : MM
+
+- model: observacion.Medidor
+  pk: 8
+  fields: 
+    estacion: 28
+    variable: RG
+    unidad : WM2
+
+- model: observacion.Medidor
+  pk: 9
+  fields: 
+    estacion: 28
+    variable: RN
+    unidad : WM2
+
+- model: observacion.Medidor
+  pk: 10
+  fields: 
+    estacion: 28
+    variable: TSOIL
+    unidad : DEGC
+  

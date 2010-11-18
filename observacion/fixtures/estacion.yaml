@@ -1,0 +1,338 @@
+- model: observacion.Estacion
+  pk: 1
+  fields:
+    nombre: GRAL. ADRIAN JARA
+    codigo: GAJ
+    tipo: M
+    elevacion: 150
+    wmo: 86011
+    longitud: -59.36666
+    latitud: -19.53333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 2
+  fields:
+    nombre: BAHIA NEGRA
+    codigo: BNE
+    tipo: M
+    elevacion: 96
+    wmo: 86033
+    longitud: -58.16666
+    latitud: -20.23333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 3
+  fields:
+    nombre: PRATS GILL
+    codigo: PGI
+    tipo: M
+    elevacion: 220
+    wmo: 86065
+    longitud: -61.50000
+    latitud: -22.70000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 4
+  fields:
+    nombre: MARISCAL ESTIGARRIBIA
+    codigo: ME
+    tipo: M
+    elevacion: 181
+    wmo: 86068
+    icao: SGME
+    longitud: -60.61666
+    latitud: -22.03333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 5
+  fields:
+    nombre: PUERTO CASADO
+    codigo: PUC
+    tipo: M
+    elevacion: 87
+    wmo: 86086
+    longitud: -57.93333
+    latitud: -22.28333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 6
+  fields:
+    nombre: CONCEPCION
+    codigo: CO
+    tipo: M
+    elevacion: 74
+    wmo: 86134
+    icao: SGCO
+    longitud: -57.30000
+    latitud: -23.41666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 7
+  fields:
+    nombre: PEDRO JUAN CABALLERO
+    codigo: PJC
+    tipo: M
+    elevacion: 662
+    wmo: 86097
+    longitud: -55.73333
+    latitud: -22.58333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 8
+  fields:
+    nombre: SALTO DEL GUAIRA
+    codigo: SG
+    tipo: M
+    elevacion: 300
+    wmo: 86210
+    longitud: -54.31666
+    latitud: -24.05000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 9
+  fields:
+    nombre: SAN PEDRO
+    codigo: SAP
+    tipo: M
+    elevacion: 80
+    wmo: 86185
+    longitud: -57.08333
+    latitud: -24.06666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 10
+  fields:
+    nombre: PUERTO ANTEQUERA
+    codigo: PAN
+    tipo: M
+    elevacion: 70
+    wmo: 86184    
+    longitud: -57.16666
+    latitud: -24.10000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 11
+  fields:
+    nombre: SAN ESTANISLAO
+    codigo: SE
+    tipo: M
+    elevacion: 192
+    wmo: 86192
+    longitud: -57.16666
+    latitud: -24.10000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 12
+  fields:
+    nombre: GRAL. BRUGUEZ
+    codigo: GBR
+    tipo: M
+    elevacion: 86
+    wmo: 86170
+    longitud: -58.83333
+    latitud: -24.75000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 13
+  fields:
+    nombre: AEROPUERTO SILVIO PETTIROSSI
+    codigo: AS
+    tipo: M
+    elevacion: 101
+    wmo: 86218
+    icao: SGAS
+    longitud: -57.51666
+    latitud: -25.25000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 14
+  fields:
+    nombre: CNEL. OVIEDO
+    codigo: CNO
+    tipo: M
+    elevacion: 163
+    wmo: 86234
+    longitud: -56.40000
+    latitud: -25.46666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 15
+  fields:
+    nombre: CIUDAD DEL ESTE
+    codigo: CDE
+    tipo: M
+    elevacion: 196
+    wmo: 86248
+    longitud: -54.60000
+    latitud: -25.53333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 16
+  fields:
+    nombre: PARAGUARI
+    codigo: PAI
+    tipo: M
+    elevacion: 125
+    longitud: -57.15000
+    latitud: -25.60000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 17
+  fields:
+    nombre: VILLARICA
+    codigo: VRC
+    tipo: M
+    elevacion: 161
+    wmo: 86233
+    longitud: -56.43333
+    latitud: -25.76666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 18
+  fields:
+    nombre: CAAZAPA
+    codigo: CAZ
+    tipo: M
+    elevacion: 140
+    wmo: 86268
+    longitud: -56.36666
+    latitud: -26.18333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 19
+  fields:
+    nombre: SAN JUAN BAUTISTA
+    codigo: SJB
+    tipo: M
+    elevacion: 126
+    wmo: 86260
+    longitud: -57.15000
+    latitud: -26.66666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 20
+  fields:
+    nombre: PILAR
+    codigo: PI
+    tipo: M
+    elevacion: 56
+    wmo: 86255
+    latitud: -58.31666
+    longitud: -26.85000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 21
+  fields:
+    nombre: CAPITAN MEZA
+    codigo: CPM
+    tipo: M
+    elevacion: 248
+    wmo: 86285
+    longitud: -55.20000
+    latitud: -26.93333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 22
+  fields:
+    nombre: ITA CORA
+    codigo: ICA
+    tipo: M
+    elevacion: 55
+    wmo: 86288
+    longitud: -58.28333
+    latitud: -27.21666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 23
+  fields:
+    nombre: CAPITAN MIRANDA
+    codigo: CNM
+    tipo: M
+    elevacion: 223
+    wmo: 86294
+    longitud: -55.83333
+    latitud: -27.28333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 24
+  fields:
+    nombre: ENCARNACION
+    codigo: ENC
+    tipo: M
+    elevacion: 91
+    wmo: 86297
+    icao: SGEN
+    longitud: -55.83333
+    latitud: -27.33333
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 25
+  fields:
+    nombre: AEROPUERTO GUARANI
+    codigo: ES
+    tipo: M
+    elevacion: 849
+    wmo: 86246
+    icao: SGES
+    longitud: -54.85000
+    latitud: -25.45000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 26
+  fields:
+    nombre: POZO COLORADO
+    codigo: PCOL
+    tipo: M
+    elevacion: 100
+    wmo: 86128
+    longitud: -58.86666
+    latitud: -23.45000
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 27
+  fields:
+    nombre: QUIINDY
+    codigo: QUI
+    tipo: M
+    elevacion: 0
+    wmo: 86240
+    longitud: -57.21666
+    latitud: -25.96666
+    institucion: 2
+
+- model: observacion.Estacion
+  pk: 28
+  fields:
+    nombre: FACULTAD POLITECNICA
+    codigo: FPUNA
+    tipo: M
+    elevacion: 138
+    longitud: -57.521369
+    latitud: -25.336534
+    institucion: 1

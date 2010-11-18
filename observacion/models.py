@@ -3,8 +3,10 @@ from django.db import models
 from django.contrib import admin
 
 class Pais(models.Model):
-    codigo_pais = models.CharField(u"código de país", max_length=2, primary_key=True)
-    nombre = models.CharField(u"nombre de país", max_length=60)
+    fips = models.CharField(u"código de fips", max_length=2, primary_key=True)
+    iso2 = models.CharField(u"código de ISO 2", max_length=2, unique=True)
+    iso3 = models.CharField(u"código de ISO 3", max_length=3, unique=True)
+    nombre = models.CharField(u"nombre", max_length=60)
     
     def __unicode__(self):
         return u"%s - %s" % (self.codigo_pais, self.nombre)
@@ -15,19 +17,21 @@ class Pais(models.Model):
         db_table = "pais"
         ordering = ['codigo_pais']
 
-class Observatorio(models.Model):
-    nombre = models.CharField(u"nombre del observatorio", max_length=80)
-    siglas = models.CharField(u"siglas del observatorio", max_length=30)
+class Institucion(models.Model):
+    nombre = models.CharField(u"nombre", max_length=80)
+    dependencia = models.CharField(u"dependencia", max_length=80)
+    siglas = models.CharField(u"siglas", max_length=30,null=True)
     sitio_web = models.URLField(u"sitio web",null=True,blank=True)
+    contacto = models.TextField(u"contacto",null=True)
     pais = models.ForeignKey(Pais, verbose_name=u"país")
     
     def __unicode__(self):
         return u"%s - %s" % (self.siglas, self.nombre)
     
     class Meta:
-        verbose_name = u"observatorio"
-        verbose_name_plural = "observatorios"
-        db_table = "observatorio"
+        verbose_name = u"institucion"
+        verbose_name_plural = "instituciones"
+        db_table = "instituciones"
 
 class VariableManager(models.Manager):
     def get(self, **kargs):
@@ -37,8 +41,8 @@ class VariableManager(models.Manager):
             return None
 
 class Variable(models.Model):
-    codigo = models.CharField(u"código de variable",max_length=8, primary_key=True)
-    descripcion = models.CharField(u"descripción de variable", max_length=80)
+    codigo = models.CharField(u"código",max_length=8, primary_key=True)
+    descripcion = models.CharField(u"descripción", max_length=80)
     objects = VariableManager()
     
     def __unicode__(self):
@@ -56,14 +60,16 @@ class Estacion(models.Model):
         ('H', u"Hidrológica"),
         ('X', u"Hidrometeorológica")
     )
-    codigo = models.CharField(u"código de estación", null=True, max_length=40)
-    nombre = models.CharField(u"nombre de estación",max_length=80)
+    codigo = models.CharField(u"código", null=True, max_length=40, unique=True)
+    wmo = models.CharField(u"código WMO", null=True, max_length=6,unique=True)
+    icao = models.CharField(u"código ICAO", null=True, max_length=4,unique=True)
+    nombre = models.CharField(u"nombre",max_length=80)
     tipo = models.CharField(u"tipo de estación", max_length=1, choices=TIPOS_ESTACIONES)
     longitud = models.FloatField(u"longitud",help_text="radianes")
     latitud = models.FloatField(u"latitud",help_text="radianes")
     elevacion = models.SmallIntegerField(u"elevación", help_text="metros")
-    observatorio = models.ForeignKey(Observatorio, verbose_name=u"observatorio")
-    variables = models.ManyToManyField(Variable, through='Sensor')
+    institucion = models.ForeignKey(Institucion, verbose_name=u"observatorio")
+    variables = models.ManyToManyField(Variable, through='Medidor')
     
     def __unicode__(self):
         return u"%s -  %s" % (self.id, self.nombre)
@@ -74,73 +80,41 @@ class Estacion(models.Model):
         db_table = "estacion"
         ordering = ["id"]
 
-class Sensor(models.Model):
-    UNIDADES = (
-        (u"º", "Grados"),
-        ("km/h","Kilometros por hora"),
-        ("hPa","Hectopascal"),
-        ("%","Porcentual"),
-        (u"ºC","Grados Celcius")
-    )
-    MUESTREO = (
-        (3600, "1H"),
-        (10800, "3H"),
-        (300, "5M"),
-        (900, "15M")
-    )
-    estacion = models.ForeignKey(Estacion, verbose_name=u"estación")
-    variable = models.ForeignKey(Variable, verbose_name="variable")
-    descripcion = models.CharField(u"descripción de sensor", max_length=80,null=True,blank=True)
-    unidad = models.CharField(u"unidad de medida", choices=UNIDADES, help_text=u"utilice la notación de UDUNITS", max_length=10)
-    intervalo = models.IntegerField(u"intervalo de muestra", choices=MUESTREO, help_text="segundos")
-    
-    def __unicode__(self):
-        return u"%s - %s (%s)" % (self.estacion.nombre, self.variable.codigo, self.unidad)
+class Unidad(models.Model):
+    codigo = models.CharField(u"código", max_length=10, primary_key=True)
+    simbolo = models.CharField(u"símbolo", max_length=10)
+    descripcion = models.CharField(u"descripción", max_length=50)
     
     class Meta:
-        verbose_name = "sensor"
-        verbose_name_plural = "sensores"
-        db_table = "sensor"
-        ordering = ["id"]
+        verbose_name = u"unidad"
+        verbose_name_plural = "unidades"
+        db_table = "unidad"
+        ordering = ["simbolo"]
+
+class Medidor(models.Model):
+    estacion = models.ForeignKey(Estacion, verbose_name=u"estación")
+    variable = models.ForeignKey(Variable, verbose_name=u"variable")
+    comentarios = models.TextField(u"comentarios",null=True)
+    unidad = models.CharField(models.ForeignKey(Unidad),u"unidad de medida", max_length=10)
+    
+    def __unicode__(self):
+        return u"%s - %s (%s)" % (self.estacion.nombre, self.variable.codigo, self.unidad.simbolo)
+    
+    class Meta:
+        verbose_name = "medidor"
+        verbose_name_plural = "medidor"
+        db_table = "medidor"
+        ordering = ["estacion", "variable", "id"]
 
 class Medida(models.Model):
-    sensor = models.ForeignKey(Sensor, verbose_name=u"sensor")
     tiempo = models.DateTimeField(u"tiempo de medición")
-    valor = models.FloatField(u"valor de medición")
+    medidor = models.ForeignKey(Medidor)
+    valor = models.DecimalField(u"valor de medición", max_digits=6,decimal_places=2)
     
     class Meta:
         verbose_name = "medida instantanea"
         verbose_name_plural = "medidas"
         db_table = "medida"
-        unique_together = ("sensor","tiempo")
-        abstract = True
 
     def __unicode__(self):
-        return u"(%s) %s %s" % (self.tiempo, self.sensor, self.valor)
-    
-class Resumen(models.Model):
-    TIPO_CONSOLIDACION = (
-        ("MAX",u"Máximo Valor"),
-        ("MIN",u"Mínimo Valor"),
-        ("AVG",u"Valor Promedio"),
-        ("SUM",u"Valor Acumulado")
-    )
-    CAT_AGRUPACION = (
-        ("D","Diario"),
-        ("M","Mensual"),
-        ("Y","Anual"),
-    )
-    sensor = models.ForeignKey(Sensor, verbose_name=u"sensor")
-    fecha = models.DateField(u"fecha de agrupación")
-    valor = models.FloatField(u"valor resumido")
-    tipo = models.CharField(u"tipo de resumen", max_length="3", choices=TIPO_CONSOLIDACION)
-    agrupacion = models.CharField(u"categoría de agrupación", choices=CAT_AGRUPACION)
-    
-    class Meta:
-        verbose_name = "medida resumida"
-        verbose_name_plural = "medidas resumidas"
-        db_table = "resumen"
-        abstract = True
-    
-    def __unicode__(self):
-        return u"(%s) %s %s %s %s %s" % (self.fecha, self.variable.codigo, self.estacion.id, self.valor, self.tipo, self.agrupacion)
+        return u"(%s) %s %s" % (self.id, self.valor)

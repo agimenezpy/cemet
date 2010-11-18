@@ -68,8 +68,11 @@ if __name__ == '__main__':
             if len(sys.argv) == 4 and match("[0-9]+x[0-9]+",sys.argv[3]):
                 W,H = map(int,sys.argv[3].split("x"))
             qh = ga.query('dims')
-            fecha = datetime.strptime(qh.time[0],"%HZ%d%b%Y")
-            outdir = cfg.get("DEFAULT","directory") + "/" + fecha.strftime("%Y%m%d%H")
+            if cfg.get("DEFAULT", "date"):
+                fecha = datetime.strptime(qh.time[0],"%HZ%d%b%Y")
+                outdir = cfg.get("DEFAULT","directory") + "/" + fecha.strftime("%Y%m%d%H")
+            else:
+                outdir = cfg.get("DEFAULT","directory") + "/"
             if not path.exists(outdir):
                 mkdir(outdir)
             r_base = True

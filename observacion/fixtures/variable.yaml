@@ -1,0 +1,49 @@
+- model: observacion.Variable
+  pk: DD
+  fields:
+    descripcion: DIRECCION DEL VIENTO
+
+- model: observacion.Variable
+  pk: FF
+  fields:
+    descripcion: VELOCIDAD DEL VIENTO
+
+- model: observacion.Variable
+  pk: P
+  fields:
+    descripcion: PRESION DE LA ESTACION
+
+- model: observacion.Variable
+  pk: RH
+  fields:
+    descripcion: HUMEDAD RELATIVA,
+
+- model: observacion.Variable
+  pk: T
+  fields:
+    descripcion: TEMPERATURA DEL AIRE
+
+- model: observacion.Variable
+  pk: TD
+  fields:
+    descripcion: TEMPERATURA DE PUNTO DE ROCIO
+
+- model: observacion.Variable
+  pk: PCP
+  fields:
+    descripcion: PRECIPITACION ACUMULADA
+
+- model: observacion.Variable
+  pk: RG
+  fields:
+    descripcion: RADIACION GLOBAL
+
+- model: observacion.Variable
+  pk: RN
+  fields:
+    descripcion: RADIACION NETA
+
+- model: observacion.Variable
+  pk: TSOIL
+  fields:
+    descripcion: TEMPERATURA DEL SUELO

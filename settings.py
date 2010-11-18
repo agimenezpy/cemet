@@ -11,7 +11,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_ENGINE = 'postgresql_psycopg2'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'cemet'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'cemet'             # Not used with sqlite3.
 DATABASE_PASSWORD = 'c3m3t'         # Not used with sqlite3.
@@ -78,12 +78,12 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.gis',
+    #'django.contrib.admin',
+    #'django.contrib.auth',
+    #'django.contrib.contenttypes',
+    #'django.contrib.gis',
     #'django.contrib.sessions',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'observacion'
 )
 

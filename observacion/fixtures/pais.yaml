@@ -1,0 +1,6 @@
+- model: observacion.Pais
+  pk: PA
+  fields:
+    iso2: PY
+    iso3: PRY
+    nombre: PARAGUAY

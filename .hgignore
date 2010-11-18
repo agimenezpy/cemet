@@ -11,7 +11,12 @@ syntax: glob
 *.mo
 *.pdf
 design/*.png
-web/public/media/*
+public/media/*
 scripts/*.log*
 scripts/*.txt
 dokuwiki/data/media/wiki/*
+campos/vismap/build/*
+campos/vismap/source/brams
+campos/*.gif
+campos/*.png
+campos/vismap/*.zip
