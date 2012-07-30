@@ -33,3 +33,9 @@
   fields:
     simbolo: mm
     descripcion: MILIMETROS
+
+- model: observacion.Unidad
+  pk: DEGC
+  fields:
+    simbolo: ºC
+    descripcion: GRADOS CELCIOUS

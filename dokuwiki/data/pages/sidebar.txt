@@ -1,7 +1,7 @@
 ====== Secciones ======
   * [[inicio|Inicio]]
-  * [[observacion:inicio|Observaciones]]
-  * [[productos:inicio|Modelos Numéricos]]
+  * [[observacion:horaria|Datos Horarios]]
+  * [[modelo:brams|Modelos Numéricos]]
   * [[academico:inicio|Área Académica]]
   * [[cemet:inicio|Acerca de]]
 

@@ -5,7 +5,7 @@
   <title>{% block title %}{% endblock %}</title>
   {% load adminmedia %}
   <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% admin_media_prefix %}css/base.css{% endblock %}" />
-  <link rel="stylesheet" media="screen" type="text/css" href="/lib/exe/css.php?t=cemet" />
+  <link rel="stylesheet" media="screen" type="text/css" href="wiki/lib/exe/css.php?t=cemet" />
   {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% admin_media_prefix %}css/rtl.css{% endblock %}" />{% endif %}
   {% block extrastyle %}{% endblock %}
   {% block extrahead %}{% endblock %}
@@ -15,7 +15,6 @@
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
 
 <div id="container">
-
   {% if not is_popup %}
     <!-- Header -->
     <div id="header" class="header">

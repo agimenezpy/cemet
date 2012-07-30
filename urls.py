@@ -14,7 +14,8 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    (r'^admin/(.*)', admin.site.root),
+    #(r'^admin/(.*)', admin.site.root),
+    (r'^admin/(.*)', admin.site.urls),
     (r'^$', 'observacion.views.default', {'page' : 'index'}),
     (r'^static/([^/]+)$', 'observacion.views.default'),
     (r'^(?P<format>gviz|json|xml|html|csv)/medida/(?P<sensor_id>\w+)/(?P<fecha>[0-9]{14})/(?P<ws>\d+[YmdHMS])?$', 'observacion.views.medida'),
@@ -23,3 +24,4 @@ urlpatterns = patterns('',
     (r'^accounts/', include('django.contrib.auth.urls')),
     (r'^accounts/$', 'observacion.views.account', {'section':'profile'})
 )
+

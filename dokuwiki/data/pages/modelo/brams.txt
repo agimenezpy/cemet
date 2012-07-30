@@ -1,0 +1,12 @@
+<html>
+<h1 id="map_title"></h1>
+<b>V&aacute;lido para el <div id="map_time" style="display:inline"></div></b><br>
+<a href="javascript:void(0)" onclick="gMapViewer.showLayers('map',['WINDBARB850','TEMPC2M'])">Temperatura y Viento a 850</a>
+| <a href="javascript:void(0)" onclick="gMapViewer.showLayers('map',['PCP'])">Precipitaci&oacute;n</a>
+| <a href="javascript:void(0)" onclick="gMapViewer.showLayers('map',['SLP','RH850'])">Humedad Relativa y Presión a nivel del mar</a>
+| <a href="javascript:void(0)" onclick="gMapViewer.showLayers('map',['GEO850','WIND850'])">Altura Geopotencial y Viento a 850</a>
+| <a href="javascript:void(0)" onclick="gMapViewer.showLayers('map',['GEOTHICK'])">Expesor Geopotencial</a>
+<div id="map" style=""></div>
+<div id="map_slider" style="margin: 5px; width: 600px;"></div>
+<script>$(document).ready(function(){gMapViewer.initialize('map','/brams/model_info.json'); gMapViewer.showLayers('map',["WINDBARB850","TEMPC2M"])})</script>
+</html>

@@ -1,6 +1,9 @@
 # -*- coding: iso-8859-1 -*-
 from django.db import models
 from django.contrib import admin
+from django.contrib.gis.db import models as gismodels
+from myfields import DateTimeField,BigAutoField
+from settings import DATABASE_ENGINE
 
 class Pais(models.Model):
     fips = models.CharField(u"código de fips", max_length=2, primary_key=True)
@@ -9,15 +12,15 @@ class Pais(models.Model):
     nombre = models.CharField(u"nombre", max_length=60)
     
     def __unicode__(self):
-        return u"%s - %s" % (self.codigo_pais, self.nombre)
+        return u"%s - %s" % (self.fips, self.nombre)
     
     class Meta:
         verbose_name = u"país"
         verbose_name_plural = "paises"
         db_table = "pais"
-        ordering = ['codigo_pais']
+        ordering = ['fips']
 
-class Institucion(models.Model):
+class Observatorio(models.Model):
     nombre = models.CharField(u"nombre", max_length=80)
     dependencia = models.CharField(u"dependencia", max_length=80)
     siglas = models.CharField(u"siglas", max_length=30,null=True)
@@ -29,9 +32,9 @@ class Institucion(models.Model):
         return u"%s - %s" % (self.siglas, self.nombre)
     
     class Meta:
-        verbose_name = u"institucion"
-        verbose_name_plural = "instituciones"
-        db_table = "instituciones"
+        verbose_name = u"observatorio"
+        verbose_name_plural = "observatorios"
+        db_table = "observatorio"
 
 class VariableManager(models.Manager):
     def get(self, **kargs):
@@ -43,7 +46,9 @@ class VariableManager(models.Manager):
 class Variable(models.Model):
     codigo = models.CharField(u"código",max_length=8, primary_key=True)
     descripcion = models.CharField(u"descripción", max_length=80)
-    objects = VariableManager()
+
+    if DATABASE_ENGINE == 'mysql':
+        objects = VariableManager()
     
     def __unicode__(self):
         return u"%s - %s" % (self.codigo, self.descripcion)
@@ -54,7 +59,7 @@ class Variable(models.Model):
         db_table = "variable"
         ordering = ['codigo']
 
-class Estacion(models.Model):
+class Estacion(gismodels.Model):
     TIPOS_ESTACIONES = (
         ('M', u"Meteorológica"),
         ('H', u"Hidrológica"),
@@ -65,11 +70,11 @@ class Estacion(models.Model):
     icao = models.CharField(u"código ICAO", null=True, max_length=4,unique=True)
     nombre = models.CharField(u"nombre",max_length=80)
     tipo = models.CharField(u"tipo de estación", max_length=1, choices=TIPOS_ESTACIONES)
-    longitud = models.FloatField(u"longitud",help_text="radianes")
-    latitud = models.FloatField(u"latitud",help_text="radianes")
+    ubicacion = gismodels.PointField(u"Ubicación Geográfica", srid=4326)
     elevacion = models.SmallIntegerField(u"elevación", help_text="metros")
-    institucion = models.ForeignKey(Institucion, verbose_name=u"observatorio")
+    observatorio = models.ForeignKey(Observatorio, verbose_name=u"observatorio")
     variables = models.ManyToManyField(Variable, through='Medidor')
+    objects = gismodels.GeoManager()
     
     def __unicode__(self):
         return u"%s -  %s" % (self.id, self.nombre)
@@ -84,6 +89,9 @@ class Unidad(models.Model):
     codigo = models.CharField(u"código", max_length=10, primary_key=True)
     simbolo = models.CharField(u"símbolo", max_length=10)
     descripcion = models.CharField(u"descripción", max_length=50)
+
+    def __unicode__(self):
+        return u"%s - %s" % (self.codigo, self.simbolo)
     
     class Meta:
         verbose_name = u"unidad"
@@ -95,7 +103,7 @@ class Medidor(models.Model):
     estacion = models.ForeignKey(Estacion, verbose_name=u"estación")
     variable = models.ForeignKey(Variable, verbose_name=u"variable")
     comentarios = models.TextField(u"comentarios",null=True)
-    unidad = models.CharField(models.ForeignKey(Unidad),u"unidad de medida", max_length=10)
+    unidad = models.ForeignKey(Unidad)
     
     def __unicode__(self):
         return u"%s - %s (%s)" % (self.estacion.nombre, self.variable.codigo, self.unidad.simbolo)
@@ -107,14 +115,16 @@ class Medidor(models.Model):
         ordering = ["estacion", "variable", "id"]
 
 class Medida(models.Model):
-    tiempo = models.DateTimeField(u"tiempo de medición")
+    id = BigAutoField(primary_key=True)
+    tiempo = DateTimeField(u"tiempo de medición")
     medidor = models.ForeignKey(Medidor)
-    valor = models.DecimalField(u"valor de medición", max_digits=6,decimal_places=2)
+    valor = models.DecimalField(u"valor de medición", max_digits=10,decimal_places=4)
     
     class Meta:
         verbose_name = "medida instantanea"
         verbose_name_plural = "medidas"
         db_table = "medida"
+        unique_together = ('tiempo', 'medidor')
 
     def __unicode__(self):
         return u"(%s) %s %s" % (self.id, self.valor)

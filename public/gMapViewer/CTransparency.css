@@ -1,0 +1,5 @@
+.knob_ie {width: 13px; height: 21px; overflow: hidden;}
+.knob_img {width: 83px; height: 21px; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='opacity-slider.png', sizingMethod='crop');position:relative;left:-70px}
+.knob {height: 21px;width: 13px; background-image: url(opacity-slider.png); background-position: -70px 0px}
+.cnt_child_ie {height:21px; width:70px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='opacity-slider.png', sizingMethod='crop');}
+.cnt_child {height:21px; width:70px; background-image: url(opacity-slider.png)}

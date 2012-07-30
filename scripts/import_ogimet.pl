@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 use DBI;
-BEGIN { unshift @INC,("/home/agimenez/metaf2xml/lib"); }
+BEGIN { unshift @INC,($ENV{METAF2XML}); }
 use DBD::Pg qw(:pg_types);
 use metaf2xml::parser;
 
@@ -15,16 +15,18 @@ sub main {
     #process(\%report);
     $ENV{PGSYSCONFDIR} = "./";
     if ($argc > 0) {
-        my $dbh = DBI->connect("dbi:Pg:service=telemetria", '', '', {AutoCommit => 0, RaiseError => 1})
+        my $dbh = DBI->connect("dbi:Pg:service=observacion", '', '', {AutoCommit => 0, RaiseError => 1})
                   || die "No me pude conectar";
-        my $estacion = $dbh->prepare("SELECT id, nombre FROM estacion WHERE comentario ~* ?");
-        my $medida = $dbh->prepare("INSERT INTO medida (estacion_id, variable_id, tiempo, valor) VALUES (?, ?, ?, ?)");
+        my $estacion = $dbh->prepare("SELECT id, nombre FROM estacion WHERE wmo = ?");
+        my $sensor = $dbh->prepare("SELECT id FROM medidor WHERE estacion_id = ? AND variable_id = ?");
+        my $medida = $dbh->prepare("INSERT INTO medida (medidor_id, tiempo, valor) VALUES (?, ?, ?, ?)");
         my $last = "";
         my $lastStationId = 0;
         my $lastCount = -1;
         my $tiempo = "";
-        open(FH, ">noreg.log");
+        open(FH, ">synop.log");
         my $station;
+        my $sens;
         my %estaciones = ();
         eval {
             foreach my $line (<>) {
@@ -70,35 +72,51 @@ sub main {
                             if ($station) {
                                 #printf "$fecha %d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\n", @result;
                                 if ($result[1] != -1) { # DD
-                                    $medida->execute($${station}[0], 'DD', $fecha, $result[1]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'DD');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[1]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[2] != -1) { # FF
-                                    $medida->execute($${station}[0], 'FF', $fecha, $result[2]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'FF');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[2]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[3] != 100) { # T
-                                    $medida->execute($${station}[0], 'T', $fecha, $result[3]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'T');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[3]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[4] != 100) { # TD
-                                    $medida->execute($${station}[0], 'TD', $fecha, $result[4]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'TD');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[4]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[5] != -1) { # RH
-                                    $medida->execute($${station}[0], 'RH', $fecha, $result[5]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'RH');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[5]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[6] != -1) { # P
-                                    $medida->execute($${station}[0], 'P', $fecha, $result[6]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'P');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[6]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[7] != -1) { # SLP
-                                    $medida->execute($${station}[0], 'SLP', $fecha, $result[7]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'SLP');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[7]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                                 if ($result[8] != -1) { # PREC
-                                    $medida->execute($${station}[0], 'PCP', $fecha, $result[8]) || die("Error al insertar datos");
+                                    $sensor->execute($$station[0], 'PCP');
+                                    $sens = $sensor->fetch();
+                                    $medida->execute($${sens}[0], $fecha, $result[8]) || die("Error al insertar datos");
                                     $lastCount++;
                                 }
                             }

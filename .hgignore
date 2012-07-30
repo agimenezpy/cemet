@@ -20,3 +20,4 @@ campos/vismap/source/brams
 campos/*.gif
 campos/*.png
 campos/vismap/*.zip
+.idea/*

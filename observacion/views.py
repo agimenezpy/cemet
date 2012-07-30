@@ -7,7 +7,7 @@ from django.views.decorators.cache import cache_page
 from django.views.generic import list_detail
 from django.contrib.contenttypes.models import ContentType
 from datetime import datetime, timedelta
-from observacion.models import Medida, Sensor
+from observacion.models import Medida, Medidor
 from re import match
 
 CONTENT = {
@@ -54,7 +54,7 @@ def list_handler(request, format, model):
         raise Http404()
 
 DEPS = {
-    "estacion" : "sensor",
+    "estacion" : "medidor",
     "observatorio" : "estacion"
 }
 
@@ -80,7 +80,7 @@ def detail_handler(request, format, model, object_id):
     except:
         raise Http404()
 
-def medida(request, format, sensor_id, fecha, ws="1d"):
+def medida(request, format, medidor_id, fecha, ws="1d"):
     try:
         numero, cual = match("(\d+)([YmdHMS])", ws).groups()
         if cual == "Y":
@@ -100,17 +100,17 @@ def medida(request, format, sensor_id, fecha, ws="1d"):
         if format != "gviz":
             return list_detail.object_list(
                 request,
-                queryset = Medida.objects.filter(sensor__id__exact=sensor_id, tiempo__range=(fecha_inicial, fecha_final)).order_by("tiempo"),
+                queryset = Medida.objects.filter(medidor__id__exact=medidor_id, tiempo__range=(fecha_inicial, fecha_final)).order_by("tiempo"),
                 template_name = "observacion/medida_list.%s" % (format),
                 mimetype = "%s; charset=iso8859-1" % (CONTENT[format])
             )
         else:
             import gviz_api
-            s = Sensor.objects.get(pk=sensor_id)
+            s = Medidor.objects.get(pk=medidor_id)
             description = {"tiempo": ("string", "Tiempo de Muestra"),
                            "valor": ("number", "%s, %s" % (s.descripcion, s.unidad))}
             data_table = gviz_api.DataTable(description)
-            data_table.LoadData(map(to_dict, Medida.objects.filter(sensor__id__exact=sensor_id, tiempo__range=(fecha_inicial, fecha_final)).order_by("tiempo")))
+            data_table.LoadData(map(to_dict, Medida.objects.filter(medidor__id__exact=medidor_id, tiempo__range=(fecha_inicial, fecha_final)).order_by("tiempo")))
             return render_to_response("observacion/medida_list.gviz",
                                       {'json_data' : data_table.ToJSonResponse(columns_order=("tiempo", "valor"),
                                                      order_by="tiempo")},

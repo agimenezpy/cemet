@@ -13,6 +13,10 @@
 ul li { list-style-type:none; padding:0px 0pt;}
 /* Header */
 
+h2 .branding {
+    color: #666;
+}
+
 #header {
     /*background: url(images/header.png) no-repeat left 30%;*/
 	height: 100px;

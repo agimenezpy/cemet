@@ -9,7 +9,7 @@
 $conf['start']       = 'Inicio';
 $conf['title']          = 'Centro Meteorol&oacute;gico';
 $conf['lang']           = 'es';
-$conf['savedir']        = '/home/agimenez/Desktop/Politecnica/cemetwiki/dokuwiki/data/';
+$conf['savedir']        = '/home/agimenez/Desktop/Politecnica/meteorologia/cemetv1/dokuwiki/data/';
 $conf['recent']         = 0;
 $conf['breadcrumbs']    = 0;
 $conf['youarehere']     = 1;

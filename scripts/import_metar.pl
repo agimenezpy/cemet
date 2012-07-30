@@ -1,7 +1,8 @@
 #!/usr/bin/perl -w
 use strict;
 use DBI;
-BEGIN { unshift @INC,("/home/agimenez/metaf2xml/lib"); }
+BEGIN { unshift @INC,($ENV{METAF2XML}); }
+use DBD::Pg qw(:pg_types);
 use metaf2xml::parser;
 
 my %convert = ('KT' => 1.85200, "KPH" => 1, "MPS" => 3.6);
@@ -12,17 +13,18 @@ sub main {
     my ($argc, @argv) = @_;
     #my %report = metaf2xml::parser::parseReport("AAXX 25004 86086 21670 70902 10260 20230 40079 56013 71399 81970 333 10350 60011 81940", 0, 1);
     #process(\%report);
+    $ENV{PGSYSCONFDIR} = "./";
     if ($argc > 0) {
-        my $dbh = DBI->connect("dbi:mysql:database=cemet;host=localhost", 'cemet', 'c3m3t', {AutoCommit => 0, RaiseError => 1})
+        my $dbh = DBI->connect("dbi:Pg:service=observacion", '', '', {AutoCommit => 0, RaiseError => 1})
                   || die "No me pude conectar";
-        my $estacion = $dbh->prepare("SELECT id, nombre FROM estacion WHERE codigo REGEXP ?");
-        my $sensor = $dbh->prepare("SELECT id FROM sensor WHERE estacion_id = ? AND variable_id = ?");
-        my $medida = $dbh->prepare("INSERT INTO medida (sensor_id, tiempo, valor) VALUES (?, ?, ?)");
+        my $estacion = $dbh->prepare("SELECT id, nombre FROM estacion WHERE icao = ?");
+        my $sensor = $dbh->prepare("SELECT id FROM medidor WHERE estacion_id = ? AND variable_id = ?");
+        my $medida = $dbh->prepare("INSERT INTO medida (medidor_id, tiempo, valor) VALUES (?, ?, ?)");
         my $last = "";
         my $lastStationId = "";
         my $lastCount = -1;
         my $tiempo = "";
-        open(FH, ">noreg_my.log");
+        open(FH, ">metar.log");
         my $station;
         my $sens;
         my %estaciones = ();

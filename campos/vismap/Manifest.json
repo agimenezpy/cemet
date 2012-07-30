@@ -3,17 +3,17 @@
   {
     "name" : "vismap",
 
-    "summary" : "Custom Application",
-    "description" : "This is a skeleton for a custom application with qooxdoo.",
+    "summary" : "Visualización de Campos",
+    "description" : "Visualiza los campos generados por el modelo BRAMS",
     
-    "homepage" : "http://some.homepage.url/",
+    "homepage" : "http://cemet.pol.una.py/",
 
-    "license" : "SomeLicense",
+    "license" : "GPL",
     "authors" : 
     [
       {
-        "name" : "First Author (uid)",
-        "email" : "first.author@some.domain"
+        "name" : "Alberto Giménez",
+        "email" : "albergimenez@gmail.com"
       }
     ],
 
@@ -24,7 +24,7 @@
   "provides" : 
   {
     "namespace"   : "vismap",
-    "encoding"    : "utf-8",
+    "encoding"    : "utf8",
     "class"       : "source/class",
     "resource"    : "source/resource",
     "translation" : "source/translation",

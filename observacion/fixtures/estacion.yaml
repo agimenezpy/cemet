@@ -6,9 +6,8 @@
     tipo: M
     elevacion: 150
     wmo: 86011
-    longitud: -59.36666
-    latitud: -19.53333
-    institucion: 2
+    ubicacion: POINT(-59.36666 -19.53333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 2
@@ -18,9 +17,8 @@
     tipo: M
     elevacion: 96
     wmo: 86033
-    longitud: -58.16666
-    latitud: -20.23333
-    institucion: 2
+    ubicacion: POINT (-58.16666 -20.23333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 3
@@ -30,9 +28,8 @@
     tipo: M
     elevacion: 220
     wmo: 86065
-    longitud: -61.50000
-    latitud: -22.70000
-    institucion: 2
+    ubicacion: POINT(-61.50000 -22.70000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 4
@@ -43,9 +40,8 @@
     elevacion: 181
     wmo: 86068
     icao: SGME
-    longitud: -60.61666
-    latitud: -22.03333
-    institucion: 2
+    ubicacion: POINT (-60.61666 -22.03333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 5
@@ -55,9 +51,8 @@
     tipo: M
     elevacion: 87
     wmo: 86086
-    longitud: -57.93333
-    latitud: -22.28333
-    institucion: 2
+    ubicacion: POINT (-57.93333 -22.28333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 6
@@ -68,9 +63,8 @@
     elevacion: 74
     wmo: 86134
     icao: SGCO
-    longitud: -57.30000
-    latitud: -23.41666
-    institucion: 2
+    ubicacion: POINT (-57.30000 -23.41666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 7
@@ -80,9 +74,8 @@
     tipo: M
     elevacion: 662
     wmo: 86097
-    longitud: -55.73333
-    latitud: -22.58333
-    institucion: 2
+    ubicacion: POINT (-55.73333 -22.58333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 8
@@ -92,9 +85,8 @@
     tipo: M
     elevacion: 300
     wmo: 86210
-    longitud: -54.31666
-    latitud: -24.05000
-    institucion: 2
+    ubicacion: POINT(-54.31666 -24.05000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 9
@@ -104,9 +96,8 @@
     tipo: M
     elevacion: 80
     wmo: 86185
-    longitud: -57.08333
-    latitud: -24.06666
-    institucion: 2
+    ubicacion: POINT (-57.08333 -24.06666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 10
@@ -116,9 +107,8 @@
     tipo: M
     elevacion: 70
     wmo: 86184    
-    longitud: -57.16666
-    latitud: -24.10000
-    institucion: 2
+    ubicacion: POINT(-57.16666 -24.10000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 11
@@ -128,9 +118,8 @@
     tipo: M
     elevacion: 192
     wmo: 86192
-    longitud: -57.16666
-    latitud: -24.10000
-    institucion: 2
+    ubicacion: POINT(-57.16666 -24.10000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 12
@@ -140,9 +129,8 @@
     tipo: M
     elevacion: 86
     wmo: 86170
-    longitud: -58.83333
-    latitud: -24.75000
-    institucion: 2
+    ubicacion: POINT(-58.83333 -24.75000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 13
@@ -153,9 +141,8 @@
     elevacion: 101
     wmo: 86218
     icao: SGAS
-    longitud: -57.51666
-    latitud: -25.25000
-    institucion: 2
+    ubicacion: POINT(-57.51666 -25.25000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 14
@@ -165,9 +152,8 @@
     tipo: M
     elevacion: 163
     wmo: 86234
-    longitud: -56.40000
-    latitud: -25.46666
-    institucion: 2
+    ubicacion: POINT(-56.40000 -25.46666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 15
@@ -177,9 +163,8 @@
     tipo: M
     elevacion: 196
     wmo: 86248
-    longitud: -54.60000
-    latitud: -25.53333
-    institucion: 2
+    ubicacion: POINT(-54.60000 -25.53333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 16
@@ -188,9 +173,8 @@
     codigo: PAI
     tipo: M
     elevacion: 125
-    longitud: -57.15000
-    latitud: -25.60000
-    institucion: 2
+    ubicacion: POINT(-57.15000 -25.60000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 17
@@ -200,9 +184,8 @@
     tipo: M
     elevacion: 161
     wmo: 86233
-    longitud: -56.43333
-    latitud: -25.76666
-    institucion: 2
+    ubicacion: POINT(-56.43333 -25.76666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 18
@@ -212,9 +195,8 @@
     tipo: M
     elevacion: 140
     wmo: 86268
-    longitud: -56.36666
-    latitud: -26.18333
-    institucion: 2
+    ubicacion: POINT(-56.36666 -26.18333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 19
@@ -224,9 +206,8 @@
     tipo: M
     elevacion: 126
     wmo: 86260
-    longitud: -57.15000
-    latitud: -26.66666
-    institucion: 2
+    ubicacion: POINT(-57.15000 -26.66666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 20
@@ -236,9 +217,8 @@
     tipo: M
     elevacion: 56
     wmo: 86255
-    latitud: -58.31666
-    longitud: -26.85000
-    institucion: 2
+    ubicacion: POINT(-58.31666 -26.85000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 21
@@ -248,9 +228,8 @@
     tipo: M
     elevacion: 248
     wmo: 86285
-    longitud: -55.20000
-    latitud: -26.93333
-    institucion: 2
+    ubicacion: POINT(-55.20000 -26.93333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 22
@@ -260,9 +239,8 @@
     tipo: M
     elevacion: 55
     wmo: 86288
-    longitud: -58.28333
-    latitud: -27.21666
-    institucion: 2
+    ubicacion: POINT(-58.28333 -27.21666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 23
@@ -272,9 +250,8 @@
     tipo: M
     elevacion: 223
     wmo: 86294
-    longitud: -55.83333
-    latitud: -27.28333
-    institucion: 2
+    ubicacion: POINT(-55.83333 -27.28333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 24
@@ -285,9 +262,8 @@
     elevacion: 91
     wmo: 86297
     icao: SGEN
-    longitud: -55.83333
-    latitud: -27.33333
-    institucion: 2
+    ubicacion: POINT(-55.83333 -27.33333)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 25
@@ -298,9 +274,8 @@
     elevacion: 849
     wmo: 86246
     icao: SGES
-    longitud: -54.85000
-    latitud: -25.45000
-    institucion: 2
+    ubicacion: POINT(-54.85000 -25.45000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 26
@@ -310,9 +285,8 @@
     tipo: M
     elevacion: 100
     wmo: 86128
-    longitud: -58.86666
-    latitud: -23.45000
-    institucion: 2
+    ubicacion: POINT(-58.86666 -23.45000)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 27
@@ -322,9 +296,8 @@
     tipo: M
     elevacion: 0
     wmo: 86240
-    longitud: -57.21666
-    latitud: -25.96666
-    institucion: 2
+    ubicacion: POINT(-57.21666 -25.96666)
+    observatorio: 2
 
 - model: observacion.Estacion
   pk: 28
@@ -333,6 +306,5 @@
     codigo: FPUNA
     tipo: M
     elevacion: 138
-    longitud: -57.521369
-    latitud: -25.336534
-    institucion: 1
+    ubicacion: POINT(-57.521369 -25.336534)
+    observatorio: 1

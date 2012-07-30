@@ -1,4 +1,4 @@
-- model : observacion.institucion
+- model : observacion.observatorio
   pk : 1
   fields : 
     nombre :  FACULTAD POLITECNICA
@@ -7,7 +7,7 @@
     sitio_web : http://www.pol.una.py/
     pais : PA
 
-- model : observacion.institucion
+- model : observacion.observatorio
   pk : 2
   fields :
     nombre :  DIRECCION NACIONAL DE AERONAUTICA CIVIL

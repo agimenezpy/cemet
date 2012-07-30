@@ -13,5 +13,5 @@ new OpenLayers.Layer.Google("Google Normal", {type: G_NORMAL_MAP, 'sphericalMerc
  {{ module }}.map.zoomToExtent({{ module }}.map.restrictedExtent)
  // Esto es necesario debido a MySQL
  {{ module }}.wkt_f2 = new OpenLayers.Format.WKT({internalProjection: {{ module }}.map.projection, externalProjection: {{ module }}.map.displayProjection});
- {{ module }}.get_ewkt = function(feat){return 'SRID=4326;' + geodjango_ubicacion.wkt_f2.write(feat);}
+ {{ module }}.get_ewkt = function(feat){return 'SRID={{ srid }};' + geodjango_ubicacion.wkt_f2.write(feat);}
 {% endblock %}

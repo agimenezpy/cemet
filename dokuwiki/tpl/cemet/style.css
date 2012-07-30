@@ -201,3 +201,7 @@ div.bar {
     text-decoration: none;
     color : gray;
 }
+
+iframe {
+    border: 0 none;
+}

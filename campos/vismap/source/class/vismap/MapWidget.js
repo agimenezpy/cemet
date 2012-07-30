@@ -3,6 +3,7 @@ qx.Class.define("vismap.MapWidget",
     extend: qx.ui.window.Window,
     construct: function (title) {
         this.base(arguments, title);
+        this.url = "http://200.10.229.172/brams/";
         
         this.setLayout(new qx.ui.layout.HBox(2));
         
@@ -22,29 +23,45 @@ qx.Class.define("vismap.MapWidget",
     members: {
        _changeMap : function (){
             if (this.form.validate()) {
-                d = this.fecha.getValue()
-                var tf = [d.getFullYear().toString(),
-                          ((d.getMonth() + 1) < 10)  ? "0" + (d.getMonth() + 1) : (d.getMonth() + 1).toString(),
-                          ((d.getDate() < 10) ? "0" + d.getDate() : d.getDate().toString())];
-                var fecha = tf[0]+tf[1]+tf[2]+this.hora.getSelection()[0].getModel();
                 var delta = (this.group.slider.getValue() < 10) ? "0" + this.group.slider.getValue() : this.group.slider.getValue().toString();
+                var imgsrc;
                 if (this.color.getSelection()[0].getModel() != "Nada") {
-                    this.color_field.setSource("brams/" + fecha + "/" + this.color.getSelection()[0].getModel() + delta + "S.gif")
+                    imgsrc = this.url + "last/COLOR_" + this.color.getSelection()[0].getModel() + "_" + delta + ".gif";
+                    this.color_field.setSource(imgsrc);
+                    //this.color_field.setSource(imgsrc);
+                    //if (this.color_field.getSource() != imgsrc) {
+                    //    qx.io.ImageLoader.load(imgsrc, function() {
+                    //        this.setSource(imgsrc)
+                    //        slider.setEnabled(true);
+                    //    }, this.color_field)
+                    //}
                 }
                 else {
                     this.color_field.setSource("")
                 }
                 if (this.contor.getSelection()[0].getModel() != "Nada") {
-                    this.contour_field.setSource("brams/" + fecha + "/" + this.contor.getSelection()[0].getModel() + delta + "C.gif")
+                    imgsrc = this.url + "last/CONTOUR_" +  this.contor.getSelection()[0].getModel() + "_" +  delta + ".gif";
+                    this.contour_field.setSource(imgsrc);
+                    //if (this.contour_field.getSource() != imgsrc) {
+                    //    qx.io.ImageLoader.load(imgsrc, function() {
+                    //        this.setSource(imgsrc)
+                    //    }, this.contour_field)
+                    //}
                 }
                 else {
-                    this.contour_field.setSource("")
+                    this.contour_field.setSource("");
                 }
                 if (this.vector.getSelection()[0].getModel() != "Nada") {
-                    this.vector_field.setSource("brams/" + fecha + "/" + this.vector.getSelection()[0].getModel() + delta + "V.gif")
+                    imgsrc = this.url + "last/VECTOR_" +  this.vector.getSelection()[0].getModel() + "_" + delta + ".gif";
+                    this.vector_field.setSource(imgsrc);
+                    //if (this.vector_field.getSource() != imgsrc) {
+                    //    qx.io.ImageLoader.load(imgsrc, function() {
+                    //        this.setSource(imgsrc)
+                    //    }, this.vector_field)
+                    //}
                 }
                 else {
-                    this.vector_field.setSource("")
+                    this.vector_field.setSource("");   
                 }
             }
         },
@@ -104,11 +121,11 @@ qx.Class.define("vismap.MapWidget",
             return container;
         },
         _createMap : function () {
-            this.shaded_relief = new qx.ui.basic.Image("brams/BASE_C.gif")
+            this.shaded_relief = new qx.ui.basic.Image(this.url + "BASE_C.gif")
                             .set({zIndex:-50});
             this.color_field = new qx.ui.basic.Image()
                                 .set({zIndex:-40});
-            this.map = new qx.ui.basic.Image("brams/BASE.gif")
+            this.map = new qx.ui.basic.Image(this.url + "BASE.gif")
                                 .set({zIndex:-30});
             this.contour_field = new qx.ui.basic.Image()
                                 .set({zIndex:-20});
@@ -128,25 +145,6 @@ qx.Class.define("vismap.MapWidget",
               // create the form
             var form = new qx.ui.form.Form();
       
-            // add the first headline
-            form.addGroupHeader("Fecha y hora");
-      
-            var fDate = new qx.ui.form.DateField();
-            fDate.setRequired(true);
-            fDate.setDateFormat(new qx.util.format.DateFormat("yyyy-MM-dd"));
-            var ahora = new Date();
-            fDate.setValue(ahora);
-            form.add(fDate, "Fecha");
-
-            var hora = new qx.ui.form.SelectBox();
-            hora.setRequired(true);
-            hora.add(new qx.ui.form.ListItem("00",null,"00"));
-            hora.add(new qx.ui.form.ListItem("12",null,"12"));
-            if (ahora.getHours() > 20) {
-                hora.setModelSelection(["12"]);
-            }
-            form.add(hora, "Hora");
-      
             // add the second header
             form.addGroupHeader("Campos");
             
@@ -154,18 +152,18 @@ qx.Class.define("vismap.MapWidget",
             color.add(new qx.ui.form.ListItem("Ninguno",null,"Nada"));
             color.add(new qx.ui.form.ListItem("-- SUPERFICIE --",null,"Nada"));
             color.add(new qx.ui.form.ListItem("Temperatura a 2m",null,"TEMP2M"));
-            color.add(new qx.ui.form.ListItem("Presi髇 a nivel del mar",null,"SLP"));
+            color.add(new qx.ui.form.ListItem("Presi贸n a nivel del mar",null,"SLP"));
             color.add(new qx.ui.form.ListItem("Viento a 10m",null,"WIND10M"));
-            color.add(new qx.ui.form.ListItem("Precipitaci髇 Acumulada",null,"PCP"));
+            color.add(new qx.ui.form.ListItem("Precipitaci贸n Acumulada",null,"PCP"));
             color.add(new qx.ui.form.ListItem("-- AIRE --",null,"Nada"));
             color.add(new qx.ui.form.ListItem("Viento 250",null,"WIND250"));
             color.add(new qx.ui.form.ListItem("Viento 500",null,"WIND500"));
             color.add(new qx.ui.form.ListItem("Viento 700",null,"WIND700"));
             color.add(new qx.ui.form.ListItem("Viento 850",null,"WIND850"));
-            color.add(new qx.ui.form.ListItem("Temperatura 250",null,"T250"));
-            color.add(new qx.ui.form.ListItem("Temperatura 500",null,"T500"));
-            color.add(new qx.ui.form.ListItem("Temperatura 700",null,"T700"));
-            color.add(new qx.ui.form.ListItem("Temperatura 850",null,"T850"));
+            color.add(new qx.ui.form.ListItem("Temperatura 250",null,"TEMP250"));
+            color.add(new qx.ui.form.ListItem("Temperatura 500",null,"TEMP500"));
+            color.add(new qx.ui.form.ListItem("Temperatura 700",null,"TEMP700"));
+            color.add(new qx.ui.form.ListItem("Temperatura 850",null,"TEMP850"));
             color.add(new qx.ui.form.ListItem("Humedad Relativa 250",null,"RH250"));
             color.add(new qx.ui.form.ListItem("Humedad Relativa 500",null,"RH500"));
             color.add(new qx.ui.form.ListItem("Humedad Relativa 700",null,"RH700"));
@@ -183,18 +181,18 @@ qx.Class.define("vismap.MapWidget",
             contor.add(new qx.ui.form.ListItem("Ninguno",null,"Nada"));
             contor.add(new qx.ui.form.ListItem("-- SUPERFICIE --",null,"Nada"));
             contor.add(new qx.ui.form.ListItem("Temperatura a 2m",null,"TEMP2M"));
-            contor.add(new qx.ui.form.ListItem("Presi髇 a nivel del mar",null,"SLP"));
+            contor.add(new qx.ui.form.ListItem("Presi贸n a nivel del mar",null,"SLP"));
             contor.add(new qx.ui.form.ListItem("Viento a 10m",null,"WIND10M"));
-            contor.add(new qx.ui.form.ListItem("Precipitaci髇 Acumulada",null,"PCP"));
+            contor.add(new qx.ui.form.ListItem("Precipitaci贸n Acumulada",null,"PCP"));
             contor.add(new qx.ui.form.ListItem("-- AIRE --",null,"Nada"));
             contor.add(new qx.ui.form.ListItem("Viento 250",null,"WIND250"));
             contor.add(new qx.ui.form.ListItem("Viento 500",null,"WIND500"));
             contor.add(new qx.ui.form.ListItem("Viento 700",null,"WIND700"));
             contor.add(new qx.ui.form.ListItem("Viento 850",null,"WIND850"));
-            contor.add(new qx.ui.form.ListItem("Temperatura 250",null,"T250"));
-            contor.add(new qx.ui.form.ListItem("Temperatura 500",null,"T500"));
-            contor.add(new qx.ui.form.ListItem("Temperatura 700",null,"T700"));
-            contor.add(new qx.ui.form.ListItem("Temperatura 850",null,"T850"));
+            contor.add(new qx.ui.form.ListItem("Temperatura 250",null,"TEMP250"));
+            contor.add(new qx.ui.form.ListItem("Temperatura 500",null,"TEMP500"));
+            contor.add(new qx.ui.form.ListItem("Temperatura 700",null,"TEMP700"));
+            contor.add(new qx.ui.form.ListItem("Temperatura 850",null,"TEMP850"));
             contor.add(new qx.ui.form.ListItem("Humedad Relativa 250",null,"RH250"));
             contor.add(new qx.ui.form.ListItem("Humedad Relativa 500",null,"RH500"));
             contor.add(new qx.ui.form.ListItem("Humedad Relativa 700",null,"RH700"));
@@ -216,10 +214,8 @@ qx.Class.define("vismap.MapWidget",
             vector.add(new qx.ui.form.ListItem("Viento 850",null,"WIND850"));
             form.add(vector, "Viento");
         
-            this.fecha = fDate, this.hora = hora, this.color = color, this.contor = contor, this.vector = vector;
+            this.color = color, this.contor = contor, this.vector = vector;
             this.form = form;
-            this.fecha.addListener("changeValue", this._changeMap, this);
-            this.hora.addListener("changeSelection", this._changeMap, this);
             this.color.addListener("changeSelection", this._changeMap, this);
             this.contor.addListener("changeSelection", this._changeMap, this);
             this.vector.addListener("changeSelection", this._changeMap, this);
